@@ -1,0 +1,10 @@
+[Unit]
+Description=PTP Hardware Clock Synchronization (ptp4l)
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/ptp4l -i enp1s0f1 -f /etc/ptp4l.conf -m -H 
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
