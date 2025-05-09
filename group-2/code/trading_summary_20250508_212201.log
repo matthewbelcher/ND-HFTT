@@ -1,0 +1,1796 @@
+Kraken Trading Strategy
+
+
+==================== Trading Log ====================
+Start Time: 2025-05-08 21:22:01.712999+00:00
+Trading Pairs: PI_XBTUSD, PI_ETHUSD
+Position Size: 0.01 BTC/ETH
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:01:14.727890
+Total Trades: 0
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:02:25.971716
+Total Trades: 0
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:03:38.541816
+Total Trades: 8
+Profitable Trades: 5
+Win Rate: 62.50%
+Total Realized PnL: $4.87
+Current Unrealized PnL: $-0.00
+Total PnL: $4.87
+
+Recent Trades:
+Time: 2025-05-08 21:25:03.303793+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,697.58
+PnL: $0.46 (0.05%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:25:04.792701+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,213.05
+PnL: $0.09 (0.41%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:25:11.231619+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,796.98
+PnL: $0.99 (0.10%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:25:18.564574+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,764.66
+PnL: $0.32 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:25:32.625234+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,854.77
+PnL: $0.90 (0.09%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:04:50.839261
+Total Trades: 12
+Profitable Trades: 6
+Win Rate: 50.00%
+Total Realized PnL: $3.26
+Current Unrealized PnL: $-0.07
+Total PnL: $3.19
+
+Recent Trades:
+Time: 2025-05-08 21:25:32.625234+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,854.77
+PnL: $0.90 (0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:25:53.619480+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $102,016.65
+PnL: $-1.62 (-0.16%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:26:01.027580+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,918.86
+PnL: $-0.98 (-0.10%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:26:15.305980+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,791.93
+PnL: $1.27 (0.12%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:26:30.431810+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,772.40
+PnL: $-0.20 (-0.02%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:06:04.038962
+Total Trades: 16
+Profitable Trades: 8
+Win Rate: 50.00%
+Total Realized PnL: $4.12
+Current Unrealized PnL: $-0.04
+Total PnL: $4.08
+
+Recent Trades:
+Time: 2025-05-08 21:26:30.431810+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,772.40
+PnL: $-0.20 (-0.02%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:26:59.036295+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,817.87
+PnL: $-0.45 (-0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:27:09.154175+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,206.61
+PnL: $-0.06 (-0.29%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:27:29.752241+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,853.01
+PnL: $0.35 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:27:50.622507+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,715.27
+PnL: $1.38 (0.14%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:07:15.215501
+Total Trades: 21
+Profitable Trades: 10
+Win Rate: 47.62%
+Total Realized PnL: $4.63
+Current Unrealized PnL: $-0.06
+Total PnL: $4.57
+
+Recent Trades:
+Time: 2025-05-08 21:28:12.226936+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,777.61
+PnL: $0.62 (0.06%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:28:13.628585+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,209.35
+PnL: $-0.03 (-0.12%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:28:54.987080+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,795.05
+PnL: $-0.17 (-0.02%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:28:56.376135+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,208.89
+PnL: $-0.00 (-0.02%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:29:03.592908+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,206.35
+PnL: $0.03 (0.12%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:08:25.993752
+Total Trades: 22
+Profitable Trades: 11
+Win Rate: 50.00%
+Total Realized PnL: $5.54
+Current Unrealized PnL: $-0.13
+Total PnL: $5.41
+
+Recent Trades:
+Time: 2025-05-08 21:28:13.628585+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,209.35
+PnL: $-0.03 (-0.12%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:28:54.987080+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,795.05
+PnL: $-0.17 (-0.02%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:28:56.376135+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,208.89
+PnL: $-0.00 (-0.02%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:29:03.592908+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,206.35
+PnL: $0.03 (0.12%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:30:19.456856+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,876.81
+PnL: $0.82 (0.08%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:09:39.794205
+Total Trades: 28
+Profitable Trades: 15
+Win Rate: 53.57%
+Total Realized PnL: $14.22
+Current Unrealized PnL: $-0.04
+Total PnL: $14.18
+
+Recent Trades:
+Time: 2025-05-08 21:31:11.062925+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,194.65
+PnL: $-0.12 (-0.53%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:31:18.497608+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,195.62
+PnL: $-0.01 (-0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:31:25.948338+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,197.63
+PnL: $0.02 (0.09%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:31:32.673368+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,925.79
+PnL: $2.52 (0.25%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:31:40.487971+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,892.66
+PnL: $0.33 (0.03%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:10:51.604618
+Total Trades: 32
+Profitable Trades: 17
+Win Rate: 53.12%
+Total Realized PnL: $15.30
+Current Unrealized PnL: $-0.08
+Total PnL: $15.22
+
+Recent Trades:
+Time: 2025-05-08 21:31:40.487971+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,892.66
+PnL: $0.33 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:31:54.997610+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,949.18
+PnL: $0.57 (0.06%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:32:03.715817+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,209.81
+PnL: $-0.12 (-0.55%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:32:17.709377+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,851.45
+PnL: $0.98 (0.10%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:32:53.315054+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,202.53
+PnL: $-0.07 (-0.33%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:12:05.631836
+Total Trades: 39
+Profitable Trades: 18
+Win Rate: 46.15%
+Total Realized PnL: $6.07
+Current Unrealized PnL: $0.04
+Total PnL: $6.11
+
+Recent Trades:
+Time: 2025-05-08 21:33:24.069509+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,206.71
+PnL: $-0.04 (-0.19%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:33:31.508051+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,204.74
+PnL: $-0.02 (-0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:33:38.009696+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,711.01
+PnL: $-1.52 (-0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:33:45.360150+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,896.59
+PnL: $-1.86 (-0.18%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:33:46.773439+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,203.24
+PnL: $0.02 (0.07%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:13:22.229842
+Total Trades: 49
+Profitable Trades: 24
+Win Rate: 48.98%
+Total Realized PnL: $4.21
+Current Unrealized PnL: $-0.02
+Total PnL: $4.19
+
+Recent Trades:
+Time: 2025-05-08 21:34:38.214699+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,791.10
+PnL: $0.55 (0.05%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:34:47.263929+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,201.82
+PnL: $-0.04 (-0.18%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:34:54.532767+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,914.93
+PnL: $1.24 (0.12%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:35:08.803005+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,824.97
+PnL: $0.90 (0.09%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:35:23.940642+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,204.17
+PnL: $-0.02 (-0.11%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:14:32.820612
+Total Trades: 53
+Profitable Trades: 26
+Win Rate: 49.06%
+Total Realized PnL: $5.28
+Current Unrealized PnL: $0.07
+Total PnL: $5.35
+
+Recent Trades:
+Time: 2025-05-08 21:35:23.940642+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,204.17
+PnL: $-0.02 (-0.11%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:35:30.652463+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,874.86
+PnL: $0.50 (0.05%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:35:45.847236+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,201.60
+PnL: $-0.03 (-0.12%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:35:58.965074+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,921.36
+PnL: $-0.46 (-0.05%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:36:20.884850+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,196.37
+PnL: $0.05 (0.24%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:15:46.732151
+Total Trades: 59
+Profitable Trades: 28
+Win Rate: 47.46%
+Total Realized PnL: $2.58
+Current Unrealized PnL: $0.00
+Total PnL: $2.58
+
+Recent Trades:
+Time: 2025-05-08 21:36:56.950168+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,763.65
+PnL: $-1.58 (-0.15%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:37:05.132692+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,203.69
+PnL: $0.01 (0.07%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:37:12.565255+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,201.53
+PnL: $-0.02 (-0.10%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:37:41.105270+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,202.16
+PnL: $-0.01 (-0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:37:48.442077+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,198.46
+PnL: $-0.04 (-0.17%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:16:59.531101
+Total Trades: 65
+Profitable Trades: 29
+Win Rate: 44.62%
+Total Realized PnL: $1.35
+Current Unrealized PnL: $0.02
+Total PnL: $1.37
+
+Recent Trades:
+Time: 2025-05-08 21:38:10.513448+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,203.43
+PnL: $-0.05 (-0.23%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:38:17.104844+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,810.95
+PnL: $-0.28 (-0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:38:31.497460+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,855.54
+PnL: $-0.45 (-0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:38:52.537469+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,828.28
+PnL: $-0.27 (-0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:39:00.027145+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,755.31
+PnL: $0.73 (0.07%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:18:12.622475
+Total Trades: 70
+Profitable Trades: 32
+Win Rate: 45.71%
+Total Realized PnL: $0.45
+Current Unrealized PnL: $-0.01
+Total PnL: $0.44
+
+Recent Trades:
+Time: 2025-05-08 21:39:23.957169+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,203.99
+PnL: $0.01 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:39:44.906140+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,197.72
+PnL: $0.06 (0.28%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:39:52.672993+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,199.08
+PnL: $0.01 (0.06%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:40:00.029900+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,200.98
+PnL: $-0.02 (-0.09%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:40:13.425847+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,697.13
+PnL: $-0.58 (-0.06%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:20:07.376916
+Total Trades: 73
+Profitable Trades: 34
+Win Rate: 46.58%
+Total Realized PnL: $0.56
+Current Unrealized PnL: $0.19
+Total PnL: $0.75
+
+Recent Trades:
+Time: 2025-05-08 21:40:00.029900+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,200.98
+PnL: $-0.02 (-0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:40:13.425847+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,697.13
+PnL: $-0.58 (-0.06%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:40:22.127447+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,202.38
+PnL: $0.01 (0.06%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:40:29.565136+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,198.89
+PnL: $0.03 (0.16%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:41:05.549103+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,198.01
+PnL: $-0.01 (-0.04%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:21:20.272082
+Total Trades: 76
+Profitable Trades: 35
+Win Rate: 46.05%
+Total Realized PnL: $0.52
+Current Unrealized PnL: $0.21
+Total PnL: $0.73
+
+Recent Trades:
+Time: 2025-05-08 21:40:29.565136+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,198.89
+PnL: $0.03 (0.16%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:41:05.549103+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,198.01
+PnL: $-0.01 (-0.04%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:42:30.889521+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,730.96
+PnL: $-0.34 (-0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:42:52.319727+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,815.72
+PnL: $0.85 (0.08%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:43:14.163027+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,836.28
+PnL: $-0.21 (-0.02%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:22:31.981324
+Total Trades: 77
+Profitable Trades: 35
+Win Rate: 45.45%
+Total Realized PnL: $-0.61
+Current Unrealized PnL: $0.20
+Total PnL: $-0.41
+
+Recent Trades:
+Time: 2025-05-08 21:41:05.549103+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,198.01
+PnL: $-0.01 (-0.04%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:42:30.889521+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,730.96
+PnL: $-0.34 (-0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:42:52.319727+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,815.72
+PnL: $0.85 (0.08%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:43:14.163027+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,836.28
+PnL: $-0.21 (-0.02%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:44:25.874157+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,759.08
+PnL: $-0.77 (-0.08%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:23:43.767032
+Total Trades: 81
+Profitable Trades: 38
+Win Rate: 46.91%
+Total Realized PnL: $1.20
+Current Unrealized PnL: $0.05
+Total PnL: $1.25
+
+Recent Trades:
+Time: 2025-05-08 21:44:25.874157+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,759.08
+PnL: $-0.77 (-0.08%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:44:47.031029+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,771.46
+PnL: $-0.12 (-0.01%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:44:55.466740+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,177.56
+PnL: $0.20 (0.93%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:45:23.093219+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,848.36
+PnL: $0.77 (0.08%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:45:44.545168+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,756.75
+PnL: $0.92 (0.09%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:24:55.571693
+Total Trades: 84
+Profitable Trades: 40
+Win Rate: 47.62%
+Total Realized PnL: $3.67
+Current Unrealized PnL: $0.07
+Total PnL: $3.74
+
+Recent Trades:
+Time: 2025-05-08 21:45:23.093219+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,848.36
+PnL: $0.77 (0.08%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:45:44.545168+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,756.75
+PnL: $0.92 (0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:46:13.938846+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,976.92
+PnL: $2.20 (0.22%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:46:48.953266+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,937.91
+PnL: $0.39 (0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:46:56.369579+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,763.22
+PnL: $-1.75 (-0.17%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:26:07.851941
+Total Trades: 89
+Profitable Trades: 44
+Win Rate: 49.44%
+Total Realized PnL: $6.41
+Current Unrealized PnL: $0.00
+Total PnL: $6.41
+
+Recent Trades:
+Time: 2025-05-08 21:47:10.660218+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,691.14
+PnL: $0.72 (0.07%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:47:25.902938+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,188.07
+PnL: $0.11 (0.48%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:47:39.339705+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,891.79
+PnL: $2.01 (0.20%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:47:40.875547+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,183.93
+PnL: $0.04 (0.19%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:48:09.563369+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,179.97
+PnL: $-0.04 (-0.18%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:27:21.596198
+Total Trades: 94
+Profitable Trades: 48
+Win Rate: 51.06%
+Total Realized PnL: $14.80
+Current Unrealized PnL: $-0.01
+Total PnL: $14.79
+
+Recent Trades:
+Time: 2025-05-08 21:48:24.452151+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,859.96
+PnL: $0.32 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:48:32.065005+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,892.75
+PnL: $0.33 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:48:33.556434+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,179.98
+PnL: $-0.00 (-0.00%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:48:54.241250+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,681.88
+PnL: $2.11 (0.21%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:49:01.674265+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,960.28
+PnL: $2.78 (0.27%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:28:33.827401
+Total Trades: 100
+Profitable Trades: 49
+Win Rate: 49.00%
+Total Realized PnL: $16.81
+Current Unrealized PnL: $-0.05
+Total PnL: $16.76
+
+Recent Trades:
+Time: 2025-05-08 21:49:31.260509+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,177.79
+PnL: $-0.02 (-0.10%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:49:37.722336+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,765.51
+PnL: $-0.61 (-0.06%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:49:39.219256+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,181.52
+PnL: $-0.04 (-0.17%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:50:00.370851+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,177.53
+PnL: $-0.04 (-0.18%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:50:07.967799+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,180.84
+PnL: $-0.03 (-0.15%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:29:44.599120
+Total Trades: 102
+Profitable Trades: 49
+Win Rate: 48.04%
+Total Realized PnL: $13.78
+Current Unrealized PnL: $-0.12
+Total PnL: $13.66
+
+Recent Trades:
+Time: 2025-05-08 21:49:39.219256+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,181.52
+PnL: $-0.04 (-0.17%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:50:00.370851+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,177.53
+PnL: $-0.04 (-0.18%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:50:07.967799+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,180.84
+PnL: $-0.03 (-0.15%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:51:03.623260+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,907.48
+PnL: $-1.42 (-0.14%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:51:24.705395+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,883.32
+PnL: $-0.24 (-0.02%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:30:54.343548
+Total Trades: 103
+Profitable Trades: 49
+Win Rate: 47.57%
+Total Realized PnL: $13.63
+Current Unrealized PnL: $-0.00
+Total PnL: $13.63
+
+Recent Trades:
+Time: 2025-05-08 21:50:00.370851+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,177.53
+PnL: $-0.04 (-0.18%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:50:07.967799+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,180.84
+PnL: $-0.03 (-0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:51:03.623260+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,907.48
+PnL: $-1.42 (-0.14%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:51:24.705395+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,883.32
+PnL: $-0.24 (-0.02%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:52:14.309233+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,174.00
+PnL: $-0.07 (-0.31%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:32:09.351769
+Total Trades: 110
+Profitable Trades: 55
+Win Rate: 50.00%
+Total Realized PnL: $26.34
+Current Unrealized PnL: $-0.06
+Total PnL: $26.28
+
+Recent Trades:
+Time: 2025-05-08 21:53:34.337133+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,174.05
+PnL: $0.01 (0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:53:41.831475+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,174.06
+PnL: $-0.00 (-0.00%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:53:55.112032+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,848.58
+PnL: $1.51 (0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:54:02.643175+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,594.59
+PnL: $2.54 (0.25%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:54:10.151794+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,875.97
+PnL: $2.81 (0.28%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:33:21.242165
+Total Trades: 116
+Profitable Trades: 60
+Win Rate: 51.72%
+Total Realized PnL: $31.65
+Current Unrealized PnL: $-0.01
+Total PnL: $31.64
+
+Recent Trades:
+Time: 2025-05-08 21:54:24.991870+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,940.30
+PnL: $1.20 (0.12%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:54:54.249346+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,170.12
+PnL: $-0.04 (-0.18%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:55:07.469172+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,732.60
+PnL: $2.08 (0.20%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:55:08.956391+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,167.74
+PnL: $0.02 (0.11%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:55:16.195394+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,171.45
+PnL: $0.04 (0.17%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:34:34.376560
+Total Trades: 123
+Profitable Trades: 61
+Win Rate: 49.59%
+Total Realized PnL: $24.00
+Current Unrealized PnL: $-0.10
+Total PnL: $23.90
+
+Recent Trades:
+Time: 2025-05-08 21:55:45.348276+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,751.62
+PnL: $-1.01 (-0.10%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:55:52.691342+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,821.91
+PnL: $-0.70 (-0.07%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:55:59.899775+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,759.06
+PnL: $-0.63 (-0.06%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:56:21.132790+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,913.44
+PnL: $-1.54 (-0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:56:35.237891+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,697.37
+PnL: $-2.16 (-0.21%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:35:42.841312
+Total Trades: 124
+Profitable Trades: 61
+Win Rate: 49.19%
+Total Realized PnL: $21.30
+Current Unrealized PnL: $-0.10
+Total PnL: $21.20
+
+Recent Trades:
+Time: 2025-05-08 21:55:52.691342+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,821.91
+PnL: $-0.70 (-0.07%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:55:59.899775+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,759.06
+PnL: $-0.63 (-0.06%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:56:21.132790+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,913.44
+PnL: $-1.54 (-0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:56:35.237891+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,697.37
+PnL: $-2.16 (-0.21%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:56:56.170125+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,827.12
+PnL: $-1.30 (-0.13%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:36:54.668681
+Total Trades: 132
+Profitable Trades: 65
+Win Rate: 49.24%
+Total Realized PnL: $26.99
+Current Unrealized PnL: $-0.02
+Total PnL: $26.97
+
+Recent Trades:
+Time: 2025-05-08 21:58:33.100738+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $102,058.05
+PnL: $2.21 (0.22%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:58:41.327711+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,179.04
+PnL: $-0.00 (-0.01%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:58:48.575344+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,180.47
+PnL: $-0.01 (-0.07%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:58:54.912478+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,928.97
+PnL: $1.29 (0.13%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:58:56.378831+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,180.11
+PnL: $-0.00 (-0.02%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:38:06.445365
+Total Trades: 139
+Profitable Trades: 69
+Win Rate: 49.64%
+Total Realized PnL: $25.54
+Current Unrealized PnL: $0.07
+Total PnL: $25.61
+
+Recent Trades:
+Time: 2025-05-08 21:59:39.144753+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,177.30
+PnL: $-0.05 (-0.21%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:59:45.568647+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,688.33
+PnL: $0.44 (0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:59:46.822926+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,175.31
+PnL: $0.02 (0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 21:59:53.202009+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,713.85
+PnL: $0.26 (0.03%)
+Status: open
+------------------------------
+Time: 2025-05-08 21:59:54.599384+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,181.95
+PnL: $0.07 (0.31%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:39:16.391376
+Total Trades: 143
+Profitable Trades: 72
+Win Rate: 50.35%
+Total Realized PnL: $30.14
+Current Unrealized PnL: $-0.05
+Total PnL: $30.09
+
+Recent Trades:
+Time: 2025-05-08 21:59:54.599384+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,181.95
+PnL: $0.07 (0.31%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:00:15.535990+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,179.32
+PnL: $0.03 (0.12%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:00:28.702875+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,723.94
+PnL: $-0.10 (-0.01%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:00:42.934875+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,942.37
+PnL: $2.18 (0.21%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:00:56.914008+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,804.72
+PnL: $1.38 (0.14%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:40:27.910152
+Total Trades: 146
+Profitable Trades: 75
+Win Rate: 51.37%
+Total Realized PnL: $31.56
+Current Unrealized PnL: $0.04
+Total PnL: $31.52
+
+Recent Trades:
+Time: 2025-05-08 22:00:42.934875+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,942.37
+PnL: $2.18 (0.21%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:00:56.914008+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,804.72
+PnL: $1.38 (0.14%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:01:24.574596+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,926.66
+PnL: $1.22 (0.12%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:01:40.117781+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,179.52
+PnL: $0.00 (0.01%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:02:16.010822+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,169.87
+PnL: $0.10 (0.44%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:41:39.009754
+Total Trades: 152
+Profitable Trades: 80
+Win Rate: 52.63%
+Total Realized PnL: $38.30
+Current Unrealized PnL: $-0.08
+Total PnL: $38.22
+
+Recent Trades:
+Time: 2025-05-08 22:02:51.244981+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,175.26
+PnL: $0.05 (0.25%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:02:57.657302+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,985.87
+PnL: $1.49 (0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:03:11.790620+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,803.57
+PnL: $1.82 (0.18%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:03:26.738702+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,174.09
+PnL: $0.01 (0.05%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:03:34.040812+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,171.51
+PnL: $-0.03 (-0.12%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:42:51.141816
+Total Trades: 159
+Profitable Trades: 83
+Win Rate: 52.20%
+Total Realized PnL: $42.26
+Current Unrealized PnL: $0.04
+Total PnL: $42.30
+
+Recent Trades:
+Time: 2025-05-08 22:04:15.716104+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,898.18
+PnL: $1.36 (0.13%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:04:23.853882+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,181.56
+PnL: $-0.10 (-0.46%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:04:30.663497+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,688.33
+PnL: $2.10 (0.21%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:04:45.591347+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,180.76
+PnL: $-0.01 (-0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:04:52.851801+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,178.83
+PnL: $0.02 (0.09%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:44:01.137368
+Total Trades: 162
+Profitable Trades: 84
+Win Rate: 51.85%
+Total Realized PnL: $42.50
+Current Unrealized PnL: $-0.01
+Total PnL: $42.49
+
+Recent Trades:
+Time: 2025-05-08 22:04:45.591347+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,180.76
+PnL: $-0.01 (-0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:04:52.851801+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,178.83
+PnL: $0.02 (0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:05:06.055121+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,701.07
+PnL: $0.13 (0.01%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:05:34.906833+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,178.27
+PnL: $-0.01 (-0.03%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:05:41.359006+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,716.56
+PnL: $-0.15 (-0.02%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:45:13.087804
+Total Trades: 168
+Profitable Trades: 90
+Win Rate: 53.57%
+Total Realized PnL: $46.06
+Current Unrealized PnL: $0.01
+Total PnL: $46.07
+
+Recent Trades:
+Time: 2025-05-08 22:06:18.715505+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,180.16
+PnL: $0.02 (0.09%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:06:31.929041+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,849.77
+PnL: $1.33 (0.13%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:06:53.666439+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,174.92
+PnL: $0.05 (0.24%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:07:00.036167+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,718.36
+PnL: $1.31 (0.13%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:07:01.415063+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,175.49
+PnL: $0.01 (0.03%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:46:22.709719
+Total Trades: 172
+Profitable Trades: 91
+Win Rate: 52.91%
+Total Realized PnL: $43.86
+Current Unrealized PnL: $-0.01
+Total PnL: $43.85
+
+Recent Trades:
+Time: 2025-05-08 22:07:01.415063+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,175.49
+PnL: $0.01 (0.03%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:07:28.777351+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,174.47
+PnL: $0.01 (0.05%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:07:41.944097+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,675.80
+PnL: $-0.43 (-0.04%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:08:03.559067+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,168.02
+PnL: $-0.06 (-0.30%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:08:16.702845+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,758.20
+PnL: $-0.82 (-0.08%)
+Status: open
+------------------------------
+============================================================
+
+
+==================== Daily Trading Summary ====================
+Trading Duration: 0:47:36.126940
+Total Trades: 175
+Profitable Trades: 91
+Win Rate: 52.00%
+Total Realized PnL: $43.49
+Current Unrealized PnL: $-0.02
+Total PnL: $43.47
+
+Recent Trades:
+Time: 2025-05-08 22:08:03.559067+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,168.02
+PnL: $-0.06 (-0.30%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:08:16.702845+00:00
+Symbol: PI_XBTUSD
+Side: buy
+Price: $101,758.20
+PnL: $-0.82 (-0.08%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:08:44.764376+00:00
+Symbol: PI_XBTUSD
+Side: sell
+Price: $101,633.17
+PnL: $-1.25 (-0.12%)
+Status: open
+------------------------------
+Time: 2025-05-08 22:08:46.484412+00:00
+Symbol: PI_ETHUSD
+Side: buy
+Price: $2,171.29
+PnL: $-0.03 (-0.15%)
+Status: closed
+------------------------------
+Time: 2025-05-08 22:09:16.075475+00:00
+Symbol: PI_ETHUSD
+Side: sell
+Price: $2,168.61
+PnL: $-0.03 (-0.12%)
+Status: open
+------------------------------
+============================================================
