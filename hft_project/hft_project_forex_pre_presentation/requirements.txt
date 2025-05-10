@@ -1,0 +1,7 @@
+requests==2.31.0
+pandas==2.2.0
+python-dotenv==1.0.0
+numpy==1.26.4
+matplotlib==3.8.2
+statsmodels==0.14.1
+scikit-learn==1.4.0
