@@ -1,0 +1,3 @@
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+IndentWidth: 4
