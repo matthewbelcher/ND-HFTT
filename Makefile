@@ -16,10 +16,10 @@ TARGET   := $(BIN_DIR)/hft-tcpstack
 TEST_BIN := $(BIN_DIR)/hft-tcpstack-test
 
 # Sources & Objects
-SRCS     := $(wildcard $(SRC_DIR)/**/*.cpp $(SRC_DIR)/*.cpp)
+SRCS     := $(shell find $(SRC_DIR) -name "*.cpp")
 OBJS     := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
-TEST_SRCS := $(wildcard $(TEST_DIR)/**/*.cpp $(TEST_DIR)/*.cpp)
+TEST_SRCS := $(shell find $(TEST_DIR) -name "*.cpp")
 TEST_OBJS := $(patsubst $(TEST_DIR)/%.cpp, $(OBJ_DIR)/test/%.o, $(TEST_SRCS))
 
 # Dependency files (auto-generated)
@@ -29,8 +29,7 @@ TEST_DEPS := $(patsubst $(OBJ_DIR)/test/%.o, $(DEP_DIR)/test/%.d, $(TEST_OBJS))
 # Flags
 CXXFLAGS := -std=c++17 \
             -Wall -Wextra -Wpedantic \
-            -I$(INC_DIR) \
-            -MMD -MP                   # emit .d dependency files
+            -I$(INC_DIR)
 
 LDFLAGS  :=
 LIBS     :=
@@ -53,27 +52,25 @@ all: dirs $(TARGET)
 
 # Link main binary (exclude test objects)
 $(TARGET): $(OBJS)
-	$(CXX) $(LDFLAGS) $^ -o $@ $(LIBS)
 	@echo "  LINK  $@"
+	@$(CXX) $(LDFLAGS) $^ -o $@ $(LIBS)
 
 # Compile src/*.cpp → build/obj/*.o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@) $(dir $(DEP_DIR)/$*.d)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-	@mv -f $(OBJ_DIR)/$*.d $(DEP_DIR)/$*.d 2>/dev/null || true
 	@echo "  CXX   $<"
+	@$(CXX) $(CXXFLAGS) -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d -c $< -o $@
 
 # Compile test/*.cpp → build/obj/test/*.o
 $(OBJ_DIR)/test/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(dir $@) $(dir $(DEP_DIR)/test/$*.d)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-	@mv -f $(OBJ_DIR)/test/$*.d $(DEP_DIR)/test/$*.d 2>/dev/null || true
 	@echo "  CXX   $<"
+	@$(CXX) $(CXXFLAGS) -MT $@ -MMD -MP -MF $(DEP_DIR)/test/$*.d -c $< -o $@
 
 # Build & run tests (link all src objs except main.o + test objs)
 test: dirs $(filter-out $(OBJ_DIR)/main.o, $(OBJS)) $(TEST_OBJS)
-	$(CXX) $(LDFLAGS) $^ -o $(TEST_BIN) $(LIBS)
 	@echo "  LINK  $(TEST_BIN)"
+	@$(CXX) $(LDFLAGS) $^ -o $(TEST_BIN) $(LIBS)
 	./$(TEST_BIN)
 
 # Create required directories
