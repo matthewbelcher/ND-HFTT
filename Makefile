@@ -68,9 +68,10 @@ $(OBJ_DIR)/test/%.o: $(TEST_DIR)/%.cpp
 	@$(CXX) $(CXXFLAGS) -MT $@ -MMD -MP -MF $(DEP_DIR)/test/$*.d -c $< -o $@
 
 # Build & run tests (link all src objs except main.o + test objs)
-test: dirs $(filter-out $(OBJ_DIR)/main.o, $(OBJS)) $(TEST_OBJS)
+TEST_LINK_OBJS := $(filter-out $(OBJ_DIR)/main.o, $(OBJS)) $(TEST_OBJS)
+test: dirs $(TEST_LINK_OBJS)
 	@echo "  LINK  $(TEST_BIN)"
-	@$(CXX) $(LDFLAGS) $^ -o $(TEST_BIN) $(LIBS)
+	@$(CXX) $(LDFLAGS) $(TEST_LINK_OBJS) -o $(TEST_BIN) $(LIBS)
 	./$(TEST_BIN)
 
 # Create required directories
