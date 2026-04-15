@@ -1,171 +1,149 @@
 #include <iostream>
 #include <iomanip>
-#include <thread>
-#include <atomic>
 #include <cstring>
 #include <cstdint>
 #include <chrono>
+#include <random>
 #include <stdexcept>
 
-#include <arpa/inet.h>   // htons / ntohs
-#include <sys/socket.h>  // setsockopt, SOL_SOCKET, SO_RCVTIMEO
-#include <sys/time.h>    // struct timeval
+#include <arpa/inet.h>   // htons / htonl / inet_pton
+#include <sys/socket.h>
 
 #include "io/raw_socket.h"
+#include "net/ethernet.h"
+#include "net/ipv4.h"
+#include "net/tcp.h"
 
-// Print an Ethernet frame in a Wireshark-style hex+ASCII dump.
-static void print_frame(const char* label, const uint8_t* buf, int len) {
-    std::cout << label << " (" << len << " bytes)\n";
-
-    // Header fields
-    std::cout << "  dst MAC : ";
-    for (int i = 0; i < 6; ++i)
-        std::cout << std::hex << std::setw(2) << std::setfill('0')
-                  << static_cast<int>(buf[i]) << (i < 5 ? ":" : "");
-    std::cout << '\n';
-
-    std::cout << "  src MAC : ";
-    for (int i = 6; i < 12; ++i)
-        std::cout << std::hex << std::setw(2) << std::setfill('0')
-                  << static_cast<int>(buf[i]) << (i < 11 ? ":" : "");
-    std::cout << '\n';
-
-    uint16_t et;
-    std::memcpy(&et, buf + 12, 2);
-    std::cout << "  EtherType: 0x" << std::hex << std::setw(4) << std::setfill('0')
-              << ntohs(et) << std::dec << '\n';
-
-    // Hex + ASCII dump of the payload
-    const uint8_t* payload = buf + 14;
-    int payload_len = len - 14;
-    std::cout << "  payload (" << payload_len << " bytes):\n";
-
-    for (int row = 0; row < payload_len; row += 16) {
+// Hex+ASCII dump of a buffer, Wireshark-style.
+static void hex_dump(const uint8_t* buf, size_t len) {
+    for (size_t row = 0; row < len; row += 16) {
         std::cout << "    " << std::hex << std::setw(4) << std::setfill('0') << row << "  ";
-        for (int col = 0; col < 16; ++col) {
-            if (row + col < payload_len)
+        for (size_t col = 0; col < 16; ++col) {
+            if (row + col < len)
                 std::cout << std::hex << std::setw(2) << std::setfill('0')
-                          << static_cast<int>(payload[row + col]) << ' ';
+                          << static_cast<int>(buf[row + col]) << ' ';
             else
                 std::cout << "   ";
             if (col == 7) std::cout << ' ';
         }
         std::cout << " |";
-        for (int col = 0; col < 16 && row + col < payload_len; ++col) {
-            char c = static_cast<char>(payload[row + col]);
+        for (size_t col = 0; col < 16 && row + col < len; ++col) {
+            char c = static_cast<char>(buf[row + col]);
             std::cout << (std::isprint(static_cast<unsigned char>(c)) ? c : '.');
         }
         std::cout << std::dec << "|\n";
     }
 }
 
-// IEEE Local Experimental Ethertype 1 — avoids confusing the kernel stack
-// with a real EtherType (e.g. 0x0800 = IPv4).
-static constexpr uint16_t TEST_ETHERTYPE = 0x88B5;
-static constexpr size_t   ETH_HDR_LEN    = 14;  // 6 dst + 6 src + 2 ethertype
-static constexpr size_t   MIN_PAYLOAD    = 46;  // pad to 60-byte minimum frame
+// Build a full Eth/IPv4/TCP SYN frame from 127.0.0.1:src_port to 127.0.0.1:dst_port.
+// Returns the total frame length written into `out`.
+static size_t build_syn_frame(uint8_t*  out,
+                              size_t    out_len,
+                              uint16_t  src_port,
+                              uint16_t  dst_port,
+                              uint32_t  seq_num)
+{
+    // Ethernet header — loopback has no real MAC, all zeros is accepted.
+    EthernetHeader eth{};
+    std::memset(eth.dst_mac, 0x00, 6);
+    std::memset(eth.src_mac, 0x00, 6);
+    eth.ethertype = ETHERTYPE_IPV4;
 
-// Phase 1 loopback smoke test.
+    const size_t eth_n = ethernet_encode(eth, out, out_len);
+    if (eth_n == 0) return 0;
+
+    // IPv4 header — protocol = TCP, DF flag, no fragmentation.
+    IPv4Header ip{};
+    ip.version_ihl    = (IPV4_VERSION << 4) | IPV4_IHL_MIN;
+    ip.tos            = 0;
+    ip.total_length   = IPV4_HDR_LEN + TCP_HDR_LEN;   // no payload on SYN
+    ip.identification = 0x1234;
+    ip.flags_frag     = 0x4000;                       // DF set, offset = 0
+    ip.ttl            = IPV4_DEFAULT_TTL;
+    ip.protocol       = IPPROTO_TCP_V;
+    // 127.0.0.1 — inet_pton writes directly in network byte order.
+    if (::inet_pton(AF_INET, "127.0.0.1", &ip.src_ip) != 1) return 0;
+    if (::inet_pton(AF_INET, "127.0.0.1", &ip.dst_ip) != 1) return 0;
+
+    const size_t ip_n = ipv4_encode(ip, out + eth_n, out_len - eth_n);
+    if (ip_n == 0) return 0;
+
+    // TCP header — SYN only, no payload, no options.
+    TCPHeader tcp{};
+    tcp.src_port             = src_port;
+    tcp.dst_port             = dst_port;
+    tcp.seq_num              = seq_num;
+    tcp.ack_num              = 0;
+    tcp.data_offset_reserved = tcp_pack_data_offset(5);
+    tcp.flags                = TCP_FLAG_SYN;
+    tcp.window               = 65535;
+    tcp.urgent_ptr           = 0;
+
+    const size_t tcp_n = tcp_encode(ip, tcp, nullptr, 0,
+                                    out + eth_n + ip_n,
+                                    out_len - eth_n - ip_n);
+    if (tcp_n == 0) return 0;
+
+    return eth_n + ip_n + tcp_n;
+}
+
+// Phase 2 smoke test.
 //
-// Opens two independent AF_PACKET/SOCK_RAW sockets on the loopback interface:
-//   - receiver: blocks waiting for our test EtherType in a background thread
-//   - sender:   builds and transmits the crafted Ethernet frame
+// Builds a raw Ethernet+IPv4+TCP SYN directed at 127.0.0.1:8080 using our own
+// packet construction code, then transmits it via AF_PACKET/SOCK_RAW on 'lo'.
 //
-// Both sockets are bound to 'lo' with ETH_P_ALL, so the receiver sees every
-// frame the sender puts on the wire — exercising the full TX→RX path between
-// two distinct RawSocket instances.
+// To observe the packet on the wire, run in another terminal before launching:
+//   sudo tcpdump -i lo -nn -xx 'tcp and port 8080'
+//
+// Expected tcpdump output: one of our SYNs at src_port → 127.0.0.1.8080,
+// followed by the kernel's RST (nothing is listening on 8080). The RST is
+// proof that our packet was well-formed enough for the kernel's TCP stack
+// to accept and respond to it.
 //
 // Run as root (or with CAP_NET_RAW):
 //   sudo ./bin/hft-tcpstack
 int main() {
-    const std::string iface = "lo";
+    const std::string iface   = "lo";
+    const uint16_t    dst_port = 8080;
 
-    std::cout << "Phase 1 loopback smoke test on '" << iface << "'\n"
-              << "  two independent RawSocket instances (sender + receiver)\n\n";
+    // Seed src_port and initial seq_num from the monotonic clock so successive
+    // runs don't confuse kernel TIME_WAIT state from a previous SYN.
+    const auto now = std::chrono::steady_clock::now().time_since_epoch().count();
+    std::mt19937 rng(static_cast<uint32_t>(now));
+    const uint16_t src_port = static_cast<uint16_t>(0xC000 | (rng() & 0x3FFF));  // 49152-65535
+    const uint32_t seq_num  = rng();
+
+    std::cout << "=== Phase 2 smoke test: raw TCP SYN on 'lo' ===\n\n"
+              << "  target  : 127.0.0.1:" << dst_port << '\n'
+              << "  src port: "           << src_port << '\n'
+              << "  seq num : 0x"         << std::hex << seq_num << std::dec << "\n\n"
+              << "  to capture:  sudo tcpdump -i lo -nn -xx 'tcp and port " << dst_port << "'\n\n";
 
     try {
-        // Open two sockets
-        RawSocket receiver(iface);
-        RawSocket sender(iface);
+        RawSocket tx(iface);
 
-        // 2-second receive deadline so the receiver thread never hangs.
-        struct timeval tv{};
-        tv.tv_sec = 2;
-        if (setsockopt(receiver.fd(), SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0)
-            throw std::runtime_error("setsockopt(SO_RCVTIMEO) failed");
-
-        // Build TX frame
-        // [ dst MAC (6) | src MAC (6) | EtherType (2) | payload (46) ]
-        uint8_t tx[ETH_HDR_LEN + MIN_PAYLOAD]{};
-
-        std::memset(tx, 0xff, 6);                          // dst: broadcast
-        // src bytes 6-11: stay 0x00 (loopback, no real NIC)
-        const uint16_t et_be = htons(TEST_ETHERTYPE);
-        std::memcpy(tx + 12, &et_be, 2);
-
-        const char tag[] = "hft-loopback-test";
-        static_assert(sizeof(tag) <= MIN_PAYLOAD, "tag too long for payload");
-        std::memcpy(tx + ETH_HDR_LEN, tag, sizeof(tag));
-
-        // Receiver thread
-        // Loops reading frames from the receiver socket, ignoring anything
-        // that isn't our test EtherType, until it finds the matching frame
-        // or the 2-second SO_RCVTIMEO fires.
-        std::atomic<bool> found{false};
-        std::atomic<bool> rx_ready{false};
-
-        std::thread rx_thread([&]() {
-            uint8_t rx[2048];
-            rx_ready.store(true);
-
-            while (true) {
-                int n = receiver.recv_frame(rx, sizeof(rx));
-                if (n < 0)  // timeout or error
-                    break;
-                if (n < static_cast<int>(ETH_HDR_LEN))
-                    continue;
-
-                uint16_t rx_et;
-                std::memcpy(&rx_et, rx + 12, 2);
-                if (ntohs(rx_et) != TEST_ETHERTYPE)
-                    continue;
-
-                const char* pl = reinterpret_cast<const char*>(rx + ETH_HDR_LEN);
-                if (std::strncmp(pl, tag, sizeof(tag) - 1) == 0) {
-                    print_frame("RX (receiver socket)", rx, n);
-                    std::cout << "  -> payload matched\n\n";
-                    found.store(true);
-                    break;
-                }
-            }
-        });
-
-        // Spin-wait until the receiver thread has entered recv_frame.
-        // The store to rx_ready happens before the first blocking syscall,
-        // so a brief yield loop is enough on any real system.
-        while (!rx_ready.load())
-            std::this_thread::yield();
-        // One extra sleep to let the thread reach the blocking recvfrom(2).
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
-
-        // Send
-        print_frame("TX (sender socket)", tx, static_cast<int>(sizeof(tx)));
-        int sent = sender.send_frame(tx, sizeof(tx));
-        if (sent < 0) {
-            std::cerr << "  FAIL: send_frame() returned " << sent << '\n';
-            rx_thread.join();
+        uint8_t frame[ETHERNET_HDR_LEN + IPV4_HDR_LEN + TCP_HDR_LEN];
+        const size_t frame_len = build_syn_frame(frame, sizeof(frame),
+                                                 src_port, dst_port, seq_num);
+        if (frame_len == 0) {
+            std::cerr << "  ERROR: frame construction failed\n";
             return 1;
         }
-        std::cout << "  -> sent " << sent << " bytes\n\n";
 
-        rx_thread.join();
+        std::cout << "TX frame (" << frame_len << " bytes):\n";
+        hex_dump(frame, frame_len);
+        std::cout << '\n';
 
-        if (found.load()) {
-            std::cout << "  PASS\n";
-            return 0;
+        const int sent = tx.send_frame(frame, frame_len);
+        if (sent < 0) {
+            std::cerr << "  ERROR: send_frame() returned " << sent
+                      << " (errno " << errno << ": " << std::strerror(errno) << ")\n";
+            return 1;
         }
-        std::cerr << "  FAIL: frame not received (timeout)\n";
-        return 1;
+
+        std::cout << "  -> sent " << sent << " bytes on '" << iface << "'\n"
+                  << "     check tcpdump for the captured SYN (and kernel RST reply)\n";
+        return 0;
 
     } catch (const std::exception& e) {
         std::cerr << "  ERROR: " << e.what() << '\n'
