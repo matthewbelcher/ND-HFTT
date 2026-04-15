@@ -43,3 +43,7 @@
 # misc
 PLAN.md
 build
+data
+.claude
+.idea
+bin

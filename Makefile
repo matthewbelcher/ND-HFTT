@@ -49,7 +49,7 @@ else
 endif
 
 # Rules
-.PHONY: all clean test dirs
+.PHONY: all clean test capture dirs
 
 all: dirs $(TARGET)
 
@@ -82,6 +82,10 @@ test: dirs $(TEST_BINS)
 		echo "--- $$t ---"; \
 		./$$t; \
 	done
+
+# Phase 2 wire validation: build main binary then run tcpdump capture script
+capture: dirs $(TARGET)
+	@sudo ./scripts/capture_syn.sh
 
 # Create required directories
 dirs:
