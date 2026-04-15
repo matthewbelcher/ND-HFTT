@@ -13,7 +13,6 @@ DEP_DIR  := build/dep
 
 # Target
 TARGET   := $(BIN_DIR)/hft-tcpstack
-TEST_BIN := $(BIN_DIR)/hft-tcpstack-test
 
 # Sources & Objects
 SRCS     := $(shell find $(SRC_DIR) -name "*.cpp")
@@ -21,10 +20,14 @@ OBJS     := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 TEST_SRCS := $(shell find $(TEST_DIR) -name "*.cpp")
 TEST_OBJS := $(patsubst $(TEST_DIR)/%.cpp, $(OBJ_DIR)/test/%.o, $(TEST_SRCS))
+TEST_BINS := $(patsubst $(TEST_DIR)/%.cpp, $(BIN_DIR)/%, $(TEST_SRCS))
 
 # Dependency files (auto-generated)
 DEPS     := $(patsubst $(OBJ_DIR)/%.o, $(DEP_DIR)/%.d, $(OBJS))
 TEST_DEPS := $(patsubst $(OBJ_DIR)/test/%.o, $(DEP_DIR)/test/%.d, $(TEST_OBJS))
+
+# Shared src objects (no main.o) linked into every test binary
+SRC_LINK_OBJS := $(filter-out $(OBJ_DIR)/main.o, $(OBJS))
 
 # Flags
 CXXFLAGS := -std=c++17 \
@@ -67,12 +70,18 @@ $(OBJ_DIR)/test/%.o: $(TEST_DIR)/%.cpp
 	@echo "  CXX   $<"
 	@$(CXX) $(CXXFLAGS) -MT $@ -MMD -MP -MF $(DEP_DIR)/test/$*.d -c $< -o $@
 
-# Build & run tests (link all src objs except main.o + test objs)
-TEST_LINK_OBJS := $(filter-out $(OBJ_DIR)/main.o, $(OBJS)) $(TEST_OBJS)
-test: dirs $(TEST_LINK_OBJS)
-	@echo "  LINK  $(TEST_BIN)"
-	@$(CXX) $(LDFLAGS) $(TEST_LINK_OBJS) -o $(TEST_BIN) $(LIBS)
-	./$(TEST_BIN)
+# One binary per test file: bin/test_foo from test/test_foo.cpp
+$(BIN_DIR)/%: $(OBJ_DIR)/test/%.o $(SRC_LINK_OBJS)
+	@echo "  LINK  $@"
+	@$(CXX) $(LDFLAGS) $^ -o $@ $(LIBS)
+
+# Build & run every test binary in sequence
+test: dirs $(TEST_BINS)
+	@for t in $(TEST_BINS); do \
+		echo ""; \
+		echo "--- $$t ---"; \
+		./$$t; \
+	done
 
 # Create required directories
 dirs:

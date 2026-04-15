@@ -11,7 +11,8 @@
 #include <arpa/inet.h>
 #include <net/if.h>
 #include <linux/if_packet.h>
-#include <net/ethernet.h>
+#include <linux/if_ether.h>  // ETH_P_ALL, ETH_ALEN (avoid <net/ethernet.h> which
+                             // collides with our include/net/ethernet.h)
 
 RawSocket::RawSocket(const std::string& iface)
     : fd_(-1), if_index_(-1), iface_(iface)

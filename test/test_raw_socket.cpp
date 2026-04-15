@@ -14,7 +14,9 @@
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <linux/if_packet.h>
-#include <net/ethernet.h>
+#include <linux/if_ether.h>  // ETH_P_ALL, ETH_ALEN (avoid <net/ethernet.h> which
+                             // collides with our include/net/ethernet.h)
+
 
 // Mini test runner
 static int g_pass = 0;
