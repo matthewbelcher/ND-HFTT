@@ -4,7 +4,7 @@
 #include <cstring>
 #include <iostream>
 
-// ── Mini test runner ──────────────────────────────────────────────────────────
+// Mini test runner
 static int g_pass = 0;
 static int g_fail = 0;
 
@@ -33,7 +33,7 @@ static const uint8_t kFrame[] = { 0x45, 0x00, 0x00, 0x28, 0x00, 0x00,
                                    0x00, 0x00, 0x50, 0x02, 0xff, 0xff,
                                    0x00, 0x00, 0x00, 0x00 };
 
-// ── Tests ─────────────────────────────────────────────────────────────────────
+// Tests
 
 static void test_push_increases_size() {
     const char* name = "RetransmitQueue: push() increments size";
@@ -240,7 +240,7 @@ static void test_front_seq_correct() {
     pass(name);
 }
 
-// ── main ──────────────────────────────────────────────────────────────────────
+// main
 int main() {
     std::cout << "=== Phase 3: Retransmit Queue Tests ===\n\n";
 
