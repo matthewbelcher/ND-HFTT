@@ -39,13 +39,19 @@ BENCH_SRC := $(BENCH_DIR)/benchmark.cpp
 BENCH_OBJ := $(OBJ_DIR)/bench/benchmark.o
 BENCH_BIN := $(BIN_DIR)/benchmark
 
+# Kernel TCP comparison benchmark (standalone, no project libs needed)
+BENCH_KERN_SRC := $(BENCH_DIR)/bench_kernel_tcp.cpp
+BENCH_KERN_OBJ := $(OBJ_DIR)/bench/bench_kernel_tcp.o
+BENCH_KERN_BIN := $(BIN_DIR)/bench_kernel_tcp
+
 # Src objects without main.o (used when linking test and bench binaries)
 SRC_OBJS_NO_MAIN := $(filter-out $(OBJ_DIR)/main.o, $(OBJS))
 
 # Dependency files
-DEPS       := $(patsubst $(OBJ_DIR)/%.o, $(DEP_DIR)/%.d, $(OBJS))
-TEST_DEPS  := $(patsubst $(OBJ_DIR)/test/%.o, $(DEP_DIR)/test/%.d, $(TEST_OBJS))
-BENCH_DEPS := $(DEP_DIR)/bench/benchmark.d
+DEPS           := $(patsubst $(OBJ_DIR)/%.o, $(DEP_DIR)/%.d, $(OBJS))
+TEST_DEPS      := $(patsubst $(OBJ_DIR)/test/%.o, $(DEP_DIR)/test/%.d, $(TEST_OBJS))
+BENCH_DEPS     := $(DEP_DIR)/bench/benchmark.d
+BENCH_KERN_DEP := $(DEP_DIR)/bench/bench_kernel_tcp.d
 
 # Flags
 CXXFLAGS := -std=c++17 \
@@ -73,7 +79,7 @@ else
 endif
 
 # Rules
-.PHONY: all clean test bench capture dirs
+.PHONY: all clean test bench bench-kernel bench-compare capture dirs
 
 all: dirs $(TARGET)
 
@@ -100,6 +106,12 @@ $(BENCH_OBJ): $(BENCH_SRC)
 	@echo "  CXX   $<"
 	@$(CXX) $(CXXFLAGS) -MT $@ -MMD -MP -MF $(BENCH_DEPS) -c $< -o $@
 
+# Compile bench/bench_kernel_tcp.cpp (no project includes needed)
+$(BENCH_KERN_OBJ): $(BENCH_KERN_SRC)
+	@mkdir -p $(dir $@) $(dir $(BENCH_KERN_DEP))
+	@echo "  CXX   $<"
+	@$(CXX) $(CXXFLAGS) -MT $@ -MMD -MP -MF $(BENCH_KERN_DEP) -c $< -o $@
+
 # Link each test binary
 $(BIN_DIR)/test_%: $(OBJ_DIR)/test/test_%.o $(SRC_OBJS_NO_MAIN)
 	@mkdir -p $(BIN_DIR)
@@ -111,6 +123,12 @@ $(BENCH_BIN): $(BENCH_OBJ) $(SRC_OBJS_NO_MAIN)
 	@mkdir -p $(BIN_DIR)
 	@echo "  LINK  $@"
 	@$(CXX) $(LDFLAGS) $^ -o $@ $(LIBS)
+
+# Link kernel TCP benchmark (only needs pthreads from the system)
+$(BENCH_KERN_BIN): $(BENCH_KERN_OBJ)
+	@mkdir -p $(BIN_DIR)
+	@echo "  LINK  $@"
+	@$(CXX) $(LDFLAGS) $^ -o $@ -lpthread
 
 # Run all test binaries
 test: dirs all $(TEST_BINS)
@@ -156,6 +174,21 @@ endif
 bench: dirs all $(BENCH_BIN)
 	@./$(BENCH_BIN) | tee $(DATA_DIR)/benchmark_results.txt
 
+# Kernel TCP loopback baseline benchmark
+bench-kernel: dirs $(BENCH_KERN_BIN)
+	@./$(BENCH_KERN_BIN) | tee $(DATA_DIR)/kernel_tcp_results.txt
+
+# Side-by-side comparison: run both benchmarks and print results together
+bench-compare: dirs all $(BENCH_BIN) $(BENCH_KERN_BIN)
+	@echo "=========================================="
+	@echo " USERSPACE STACK (in-process, no syscalls)"
+	@echo "=========================================="
+	@./$(BENCH_BIN) | tee $(DATA_DIR)/benchmark_results.txt
+	@echo "=========================================="
+	@echo " KERNEL TCP BASELINE (loopback, 4 syscalls per RTT)"
+	@echo "=========================================="
+	@./$(BENCH_KERN_BIN) | tee $(DATA_DIR)/kernel_tcp_results.txt
+
 # Phase 2 wire validation
 capture: dirs $(TARGET)
 	@sudo ./scripts/capture_syn.sh
@@ -168,4 +201,4 @@ clean:
 	rm -rf build/ $(BIN_DIR)/
 
 # Pull in generated dependency files
--include $(DEPS) $(TEST_DEPS) $(BENCH_DEPS)
+-include $(DEPS) $(TEST_DEPS) $(BENCH_DEPS) $(BENCH_KERN_DEP)
