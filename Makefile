@@ -46,11 +46,8 @@ else
   CXXFLAGS += -O2 -g
 endif
 
-# ── Source objects shared by all test binaries (everything except main.o) ─────
-SRC_OBJS_NO_MAIN := $(filter-out $(OBJ_DIR)/main.o, $(OBJS))
-
-# ── Rules ─────────────────────────────────────────────────────────────────────
-.PHONY: all clean test test-phase1 test-phase2 test-phase3 dirs
+# Rules
+.PHONY: all clean test capture dirs
 
 all: dirs $(TARGET)
 
@@ -104,6 +101,10 @@ test-phase3: dirs all $(BIN_DIR)/test_retransmit $(BIN_DIR)/test_tcp_state
 	@echo ""
 	@echo "--- test_tcp_state ---"
 	@./$(BIN_DIR)/test_tcp_state
+
+# Phase 2 wire validation: build main binary then run tcpdump capture script
+capture: dirs $(TARGET)
+	@sudo ./scripts/capture_syn.sh
 
 # Create required directories
 dirs:
