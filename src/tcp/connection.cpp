@@ -9,7 +9,7 @@
 
 #include <arpa/inet.h>   // htonl
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// Helpers
 
 // Generate a time-based ISN (loosely follows RFC 793's 4 µs clock advice).
 static uint32_t time_based_isn() {
@@ -22,7 +22,7 @@ static bool seq_lt(uint32_t a, uint32_t b) {
     return static_cast<int32_t>(b - a) > 0;
 }
 
-// ─── Constructor ─────────────────────────────────────────────────────────────
+// Constructor
 
 TCPConnection::TCPConnection(uint32_t                  local_ip,
                              uint16_t                  local_port,
@@ -44,7 +44,7 @@ TCPConnection::TCPConnection(uint32_t                  local_ip,
       time_wait_duration_(time_wait_duration)
 {}
 
-// ─── IPv4 header factory ─────────────────────────────────────────────────────
+// IPv4 header factory
 
 IPv4Header TCPConnection::make_ip_header(size_t tcp_payload_len) const {
     IPv4Header ip{};
@@ -62,7 +62,7 @@ IPv4Header TCPConnection::make_ip_header(size_t tcp_payload_len) const {
     return ip;
 }
 
-// ─── Segment construction & transmission ─────────────────────────────────────
+// Segment construction & transmission
 
 void TCPConnection::send_segment(uint8_t        flags,
                                  uint32_t       seq,
@@ -79,7 +79,7 @@ void TCPConnection::send_segment(uint8_t        flags,
     tcp.ack_num              = ack;
     tcp.data_offset_reserved = tcp_pack_data_offset(5);
     tcp.flags                = flags;
-    tcp.window               = static_cast<uint16_t>(rcv_wnd_);
+    tcp.window               = fc_.recv_window();
     tcp.urgent_ptr           = 0;
 
     // Stack-allocate a frame buffer large enough for any segment we build.
@@ -102,7 +102,7 @@ void TCPConnection::send_segment(uint8_t        flags,
     }
 }
 
-// ─── Public interface ─────────────────────────────────────────────────────────
+// Public interface
 
 void TCPConnection::listen() {
     state_ = TCPState::LISTEN;
@@ -162,7 +162,7 @@ bool TCPConnection::close() {
     }
 }
 
-// ─── Inbound packet processing ────────────────────────────────────────────────
+// Inbound packet processing
 
 void TCPConnection::receive_packet(const uint8_t* buf, size_t len) {
     IPv4Header ip{};
@@ -218,7 +218,7 @@ void TCPConnection::process_segment(const IPv4Header& ip,
     }
 }
 
-// ─── State handlers ───────────────────────────────────────────────────────────
+// State handlers
 
 void TCPConnection::handle_closed(const TCPHeader& seg, size_t payload_len) {
     // RFC 793 §3.9: discard RST segments silently in CLOSED state.
@@ -443,7 +443,7 @@ void TCPConnection::handle_time_wait(const TCPHeader& seg) {
     }
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// Helpers
 
 bool TCPConnection::process_ack(uint32_t ack_num) {
     // Accept only if ack_num is strictly greater than snd_una_ and does not
@@ -461,7 +461,11 @@ bool TCPConnection::process_ack(uint32_t ack_num) {
 
 void TCPConnection::process_data(const uint8_t* payload, size_t plen) {
     rcv_nxt_ += static_cast<uint32_t>(plen);
+    // Shrink the advertised window as the buffer fills, then restore it after
+    // the application consumes the data (immediate delivery model).
+    fc_.on_receive(plen);
     if (recv_fn_) recv_fn_(payload, plen);
+    fc_.on_consume(plen);
     // Send a cumulative ACK for everything received so far.
     send_segment(TCP_FLAG_ACK, snd_nxt_, rcv_nxt_, nullptr, 0);
 }
@@ -493,7 +497,7 @@ void TCPConnection::send_zero_window_probe() {
     tcp.ack_num              = rcv_nxt_;
     tcp.data_offset_reserved = tcp_pack_data_offset(5);
     tcp.flags                = TCP_FLAG_ACK | TCP_FLAG_PSH;
-    tcp.window               = static_cast<uint16_t>(rcv_wnd_);
+    tcp.window               = fc_.recv_window();
     tcp.urgent_ptr           = 0;
 
     uint8_t buf[IPV4_HDR_LEN + TCP_HDR_LEN + 1];
@@ -502,7 +506,7 @@ void TCPConnection::send_zero_window_probe() {
     send_fn_(buf, n);
 }
 
-// ─── Timer ───────────────────────────────────────────────────────────────────
+// Timer
 
 std::chrono::milliseconds TCPConnection::tick(
         std::chrono::steady_clock::time_point now)

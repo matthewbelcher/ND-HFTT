@@ -9,7 +9,7 @@
 
 #include <arpa/inet.h>   // htonl
 
-// ── Mini test runner ──────────────────────────────────────────────────────────
+// Mini test runner
 static int g_pass = 0;
 static int g_fail = 0;
 
@@ -33,7 +33,7 @@ static void fail(const char* name, const char* reason) {
         }                                                                   \
     } while (false)
 
-// ── In-process wiring helpers ─────────────────────────────────────────────────
+// In-process wiring helpers
 
 // Build a wired pair: A (client) connects to B (server).
 // A.send_fn_ → B.receive_packet, B.send_fn_ → A.receive_packet.
@@ -87,7 +87,7 @@ struct ConnPair {
     }
 };
 
-// ── State-transition unit tests ───────────────────────────────────────────────
+// State-transition unit tests
 
 static void test_initial_state_closed() {
     const char* name = "TCPConnection: initial state is CLOSED";
@@ -116,7 +116,7 @@ static void test_connect_without_listener_sets_syn_sent() {
     pass(name);
 }
 
-// ── Handshake tests ───────────────────────────────────────────────────────────
+// Handshake tests
 
 static void test_handshake_both_established() {
     const char* name = "Handshake: both sides reach ESTABLISHED";
@@ -153,7 +153,7 @@ static void test_handshake_sequence_numbers() {
     pass(name);
 }
 
-// ── Data transfer tests ───────────────────────────────────────────────────────
+// Data transfer tests
 
 static void test_data_a_to_b() {
     const char* name = "Data transfer: A → B, B receives correctly";
@@ -246,7 +246,7 @@ static void test_large_send_segmented() {
     pass(name);
 }
 
-// ── Connection teardown tests ─────────────────────────────────────────────────
+// Connection teardown tests
 
 // Full active-close sequence: A closes first.
 //   A: ESTABLISHED → FIN_WAIT_1 → FIN_WAIT_2 → TIME_WAIT
@@ -368,7 +368,7 @@ static void test_time_wait_expires() {
     pass(name);
 }
 
-// ── close() return value ──────────────────────────────────────────────────────
+// close() return value
 
 static void test_close_invalid_state_returns_false() {
     const char* name = "close() in invalid state returns false";
@@ -386,7 +386,7 @@ static void test_close_invalid_state_returns_false() {
     pass(name);
 }
 
-// ── Error callback on retransmit abort ───────────────────────────────────────
+// Error callback on retransmit abort
 
 static void test_error_callback_fires_on_abort() {
     const char* name = "Retransmit: error callback fires after MAX_RETRANSMIT exceeded";
@@ -433,7 +433,7 @@ static void test_error_callback_fires_on_abort() {
     pass(name);
 }
 
-// ── Corrupt-packet rejection ──────────────────────────────────────────────────
+// Corrupt-packet rejection
 
 static void test_corrupt_packet_dropped() {
     const char* name = "receive_packet: bad checksum drops packet silently";
@@ -471,7 +471,7 @@ static void test_corrupt_packet_dropped() {
     pass(name);
 }
 
-// ── RST error callback ────────────────────────────────────────────────────────
+// RST error callback
 
 static void test_rst_calls_error_callback() {
     const char* name = "RST reception: error callback fires and state becomes CLOSED";
@@ -540,7 +540,7 @@ static void test_rst_calls_error_callback() {
     pass(name);
 }
 
-// ── Zero-window persist probe ─────────────────────────────────────────────────
+// Zero-window persist probe
 
 static void test_zero_window_probe() {
     const char* name = "Zero-window: persist probe sent when peer window is closed";
@@ -632,7 +632,7 @@ static void test_zero_window_probe() {
     pass(name);
 }
 
-// ── Retransmit timer integration ──────────────────────────────────────────────
+// Retransmit timer integration
 
 // When a segment is not acknowledged, tick() must retransmit it.
 static void test_retransmit_fires_on_timeout() {
@@ -701,7 +701,7 @@ static void test_retransmit_fires_on_timeout() {
     pass(name);
 }
 
-// ── main ──────────────────────────────────────────────────────────────────────
+// main
 int main() {
     std::cout << "=== Phase 3: TCP State Machine Tests ===\n\n";
 

@@ -3,6 +3,7 @@
 
 #include "tcp/tcp_state.h"
 #include "tcp/retransmit.h"
+#include "tcp/flow_control.h"
 #include "net/ipv4.h"
 #include "net/tcp.h"
 
@@ -16,20 +17,20 @@ constexpr uint16_t TCP_MSS = 1460;
 
 // Per-connection TCP state machine implementing RFC 793.
 //
-// ── Data flow ──────────────────────────────────────────────────────────────
+// Data flow
 //   Outbound: whenever the connection needs to send a segment it calls
 //             send_fn_ with the raw IP+TCP bytes (no Ethernet header).
 //   Inbound:  the caller routes raw IP+TCP bytes to receive_packet().
 //
-// ── In-process wiring for tests ────────────────────────────────────────────
+// In-process wiring for tests
 //   Wire two connections by pointing each one's send_fn_ at the other's
 //   receive_packet(). The full handshake completes synchronously inside a
 //   single call to connect() via nested callbacks.
 //
-// ── Thread safety ──────────────────────────────────────────────────────────
+// Thread safety
 //   Not thread-safe. All methods must be called from the same thread.
 //
-// ── Sequence-number arithmetic ─────────────────────────────────────────────
+// Sequence-number arithmetic
 //   We use int32_t-cast comparisons (serial-number arithmetic, RFC 1982).
 //   Phase 3 uses small ISNs, so the simpler unsigned comparisons in
 //   process_ack() are also safe in practice.
@@ -90,7 +91,7 @@ public:
     // Returns the time until the next scheduled event.
     std::chrono::milliseconds tick(std::chrono::steady_clock::time_point now);
 
-    // ── Accessors ────────────────────────────────────────────────────────
+    // Accessors
     TCPState state()       const { return state_; }
     uint32_t snd_una()     const { return snd_una_; }
     uint32_t snd_nxt()     const { return snd_nxt_; }
@@ -143,39 +144,39 @@ private:
     // unacknowledged payload. Does NOT push onto the retransmit queue.
     void send_zero_window_probe();
 
-    // ── Endpoints ────────────────────────────────────────────────────────
+    // Endpoints
     uint32_t local_ip_;
     uint16_t local_port_;
     uint32_t remote_ip_;
     uint16_t remote_port_;
 
-    // ── Callbacks ────────────────────────────────────────────────────────
+    // Callbacks
     SendFn  send_fn_;
     RecvFn  recv_fn_;
     ErrorFn error_fn_;
 
-    // ── State ────────────────────────────────────────────────────────────
+    // State
     TCPState state_{ TCPState::CLOSED };
 
-    // ── Send sequence variables (RFC 793 §3.2) ───────────────────────────
+    // Send sequence variables (RFC 793 §3.2)
     uint32_t iss_    { 0 };      // initial send sequence number
     uint32_t snd_una_{ 0 };      // oldest unacknowledged sequence number
     uint32_t snd_nxt_{ 0 };      // next sequence number to send
     uint32_t snd_wnd_{ 65535 };  // peer's last advertised receive window
 
-    // ── Receive sequence variables ────────────────────────────────────────
+    // Receive sequence variables
     uint32_t irs_    { 0 };      // initial receive sequence number
     uint32_t rcv_nxt_{ 0 };      // next expected inbound sequence number
-    uint32_t rcv_wnd_{ 65535 };  // our receive window (advertised to peer)
+    FlowController fc_;           // tracks receive buffer space; drives advertised window
 
-    // ── Retransmit queue + RTO ────────────────────────────────────────────
+    // Retransmit queue + RTO
     RetransmitQueue retx_queue_;
 
-    // ── TIME_WAIT timer ───────────────────────────────────────────────────
+    // TIME_WAIT timer
     std::chrono::milliseconds             time_wait_duration_;
     std::chrono::steady_clock::time_point time_wait_start_{};
 
-    // ── Zero-window persist timer ─────────────────────────────────────────
+    // Zero-window persist timer
     bool                                  persist_active_{false};
     std::chrono::steady_clock::time_point persist_start_{};
     std::chrono::milliseconds             persist_rto_{RTO_INITIAL};

@@ -105,6 +105,9 @@ test-phase3: dirs all $(BIN_DIR)/test_retransmit $(BIN_DIR)/test_tcp_state
 	@echo "--- test_tcp_state ---"
 	@./$(BIN_DIR)/test_tcp_state
 
+test-phase4: dirs all $(BIN_DIR)/test_message
+	@./$(BIN_DIR)/test_message
+
 # Phase 2 wire validation: build main binary then run tcpdump capture script
 capture: dirs $(TARGET)
 	@sudo ./scripts/capture_syn.sh
