@@ -41,15 +41,26 @@ public:
     // Callback invoked when application data arrives from the peer.
     using RecvFn = std::function<void(const uint8_t*, size_t)>;
 
+    // Callback invoked when the connection is aborted (e.g. retransmit limit
+    // exceeded). The connection is already CLOSED when this fires.
+    using ErrorFn = std::function<void()>;
+
     // Construct a connection endpoint.
     //   local_ip / remote_ip  — in NETWORK byte order (htonl or inet_pton).
     //   initial_seq           — ISN override (0 = time-based random; set
     //                           explicitly in tests for reproducibility).
-    TCPConnection(uint32_t local_ip,   uint16_t local_port,
-                  uint32_t remote_ip,  uint16_t remote_port,
-                  SendFn   send_fn,
-                  RecvFn   recv_fn     = nullptr,
-                  uint32_t initial_seq = 0);
+    //   error_fn              — called when the connection aborts; may be null.
+    //   time_wait_duration    — TIME_WAIT timeout; default is TCP_TIME_WAIT_DURATION.
+    //                           Pass a shorter value in tests to avoid long waits.
+    TCPConnection(uint32_t                  local_ip,
+                  uint16_t                  local_port,
+                  uint32_t                  remote_ip,
+                  uint16_t                  remote_port,
+                  SendFn                    send_fn,
+                  RecvFn                    recv_fn            = nullptr,
+                  uint32_t                  initial_seq        = 0,
+                  ErrorFn                   error_fn           = nullptr,
+                  std::chrono::milliseconds time_wait_duration = TCP_TIME_WAIT_DURATION);
 
     // Passive open: CLOSED → LISTEN.
     void listen();
@@ -66,7 +77,9 @@ public:
     // Initiate graceful close: send FIN.
     //   ESTABLISHED  → FIN_WAIT_1
     //   CLOSE_WAIT   → LAST_ACK
-    void close();
+    // Returns true if a FIN was sent; false if the current state does not
+    // permit initiating a close (the call is a no-op in that case).
+    bool close();
 
     // Process an incoming packet routed to this connection.
     // buf points to the first byte of the IPv4 header (no Ethernet header).
@@ -104,7 +117,7 @@ private:
                          size_t            payload_len);
 
     // Per-state handlers.
-    void handle_closed      (const TCPHeader& seg);
+    void handle_closed      (const TCPHeader& seg, size_t payload_len);
     void handle_listen      (const TCPHeader& seg);
     void handle_syn_sent    (const TCPHeader& seg);
     void handle_syn_received(const TCPHeader& seg);
@@ -126,6 +139,10 @@ private:
     // Construct the IPv4 header for an outgoing segment of the given payload size.
     IPv4Header make_ip_header(size_t tcp_payload_len) const;
 
+    // Build and transmit a one-byte zero-window probe from the oldest
+    // unacknowledged payload. Does NOT push onto the retransmit queue.
+    void send_zero_window_probe();
+
     // ── Endpoints ────────────────────────────────────────────────────────
     uint32_t local_ip_;
     uint16_t local_port_;
@@ -133,8 +150,9 @@ private:
     uint16_t remote_port_;
 
     // ── Callbacks ────────────────────────────────────────────────────────
-    SendFn send_fn_;
-    RecvFn recv_fn_;
+    SendFn  send_fn_;
+    RecvFn  recv_fn_;
+    ErrorFn error_fn_;
 
     // ── State ────────────────────────────────────────────────────────────
     TCPState state_{ TCPState::CLOSED };
@@ -154,7 +172,13 @@ private:
     RetransmitQueue retx_queue_;
 
     // ── TIME_WAIT timer ───────────────────────────────────────────────────
+    std::chrono::milliseconds             time_wait_duration_;
     std::chrono::steady_clock::time_point time_wait_start_{};
+
+    // ── Zero-window persist timer ─────────────────────────────────────────
+    bool                                  persist_active_{false};
+    std::chrono::steady_clock::time_point persist_start_{};
+    std::chrono::milliseconds             persist_rto_{RTO_INITIAL};
 };
 
 #endif //HFT_TCPSTACK_CONNECTION_H

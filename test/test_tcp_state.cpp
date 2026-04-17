@@ -43,8 +43,10 @@ struct ConnPair {
     std::vector<uint8_t> a_recv;
     std::vector<uint8_t> b_recv;
 
-    TCPConnection a;
+    // b must be declared before a: it is initialized first in the ctor
+    // because a's send_fn routes to b.receive_packet(), so b must exist.
     TCPConnection b;
+    TCPConnection a;
 
     static constexpr uint32_t IP_A = 0x0a000001u; // 10.0.0.1 in host order
     static constexpr uint32_t IP_B = 0x0a000002u;
@@ -366,6 +368,270 @@ static void test_time_wait_expires() {
     pass(name);
 }
 
+// ── close() return value ──────────────────────────────────────────────────────
+
+static void test_close_invalid_state_returns_false() {
+    const char* name = "close() in invalid state returns false";
+
+    TCPConnection a(htonl(0x0a000001u), 1234, htonl(0x0a000002u), 80,
+                    [](const uint8_t*, size_t) {}, nullptr, 1000);
+
+    // CLOSED state.
+    if (a.close()) { fail(name, "close() in CLOSED should return false"); return; }
+
+    // LISTEN state.
+    a.listen();
+    if (a.close()) { fail(name, "close() in LISTEN should return false"); return; }
+
+    pass(name);
+}
+
+// ── Error callback on retransmit abort ───────────────────────────────────────
+
+static void test_error_callback_fires_on_abort() {
+    const char* name = "Retransmit: error callback fires after MAX_RETRANSMIT exceeded";
+
+    bool error_fired = false;
+    std::vector<std::vector<uint8_t>> to_b, to_a;
+
+    TCPConnection client(htonl(0x0a000001u), 54320, htonl(0x0a000002u), 8081,
+                         [&to_b](const uint8_t* buf, size_t len) {
+                             to_b.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, 100,
+                         [&error_fired]() { error_fired = true; });
+    TCPConnection server(htonl(0x0a000002u), 8081, htonl(0x0a000001u), 54320,
+                         [&to_a](const uint8_t* buf, size_t len) {
+                             to_a.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, 200);
+
+    // Manual handshake with deferred delivery.
+    server.listen();
+    client.connect();
+    server.receive_packet(to_b.back().data(), to_b.back().size()); to_b.clear();
+    client.receive_packet(to_a.back().data(), to_a.back().size()); to_a.clear();
+    server.receive_packet(to_b.back().data(), to_b.back().size()); to_b.clear();
+
+    if (client.state() != TCPState::ESTABLISHED) { fail(name, "handshake failed"); return; }
+
+    // Send data to the server, then drop all outgoing packets so nothing is ACKed.
+    const uint8_t payload[] = "x";
+    client.send(payload, 1);
+    to_b.clear();
+
+    // Advance synthetic time past RTO_MAX for each tick until abort fires.
+    auto now = std::chrono::steady_clock::now();
+    for (int i = 0; i <= static_cast<int>(MAX_RETRANSMIT); ++i) {
+        now += RTO_MAX + std::chrono::milliseconds{1};
+        client.tick(now);
+        to_b.clear();  // drop each retransmit
+    }
+
+    if (!error_fired) { fail(name, "error callback was not called after abort"); return; }
+    if (client.state() != TCPState::CLOSED) { fail(name, "client not CLOSED after abort"); return; }
+    pass(name);
+}
+
+// ── Corrupt-packet rejection ──────────────────────────────────────────────────
+
+static void test_corrupt_packet_dropped() {
+    const char* name = "receive_packet: bad checksum drops packet silently";
+
+    // Capture packets in an outbox so we can corrupt one before delivery.
+    std::vector<std::vector<uint8_t>> to_b;
+
+    TCPConnection client(htonl(0x0a000001u), 54319, htonl(0x0a000002u), 8082,
+                         [&to_b](const uint8_t* buf, size_t len) {
+                             to_b.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, 500);
+    TCPConnection server(htonl(0x0a000002u), 8082, htonl(0x0a000001u), 54319,
+                         [](const uint8_t*, size_t) {},
+                         nullptr, 600);
+
+    server.listen();
+    client.connect();  // SYN queued in to_b
+
+    // Corrupt a byte inside the TCP header of the SYN (byte 20 = start of TCP
+    // header, byte 24 onward is seq_num). Flip a bit in the seq_num area so
+    // the TCP checksum becomes invalid.
+    auto syn = to_b.back();
+    to_b.clear();
+    syn[24] ^= 0x01;  // flip one bit in the TCP seq_num field
+
+    server.receive_packet(syn.data(), syn.size());
+
+    // Server should stay in LISTEN because the corrupted packet was dropped.
+    if (server.state() != TCPState::LISTEN) {
+        fail(name, ("server left LISTEN after corrupt SYN, state=" +
+                    std::string(state_name(server.state()))).c_str());
+        return;
+    }
+    pass(name);
+}
+
+// ── RST error callback ────────────────────────────────────────────────────────
+
+static void test_rst_calls_error_callback() {
+    const char* name = "RST reception: error callback fires and state becomes CLOSED";
+
+    bool error_fired = false;
+    std::vector<std::vector<uint8_t>> to_b, to_a;
+
+    constexpr uint32_t IP_C  = 0x0a000001u;
+    constexpr uint32_t IP_S  = 0x0a000002u;
+    constexpr uint16_t PORT_C = 54317;
+    constexpr uint16_t PORT_S = 8084;
+    constexpr uint32_t ISN_C  = 50;
+    constexpr uint32_t ISN_S  = 60;
+
+    TCPConnection client(htonl(IP_C), PORT_C, htonl(IP_S), PORT_S,
+                         [&to_b](const uint8_t* buf, size_t len) {
+                             to_b.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, ISN_C,
+                         [&error_fired]() { error_fired = true; });
+    TCPConnection server(htonl(IP_S), PORT_S, htonl(IP_C), PORT_C,
+                         [&to_a](const uint8_t* buf, size_t len) {
+                             to_a.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, ISN_S);
+
+    // Manual handshake.
+    server.listen();
+    client.connect();
+    server.receive_packet(to_b.back().data(), to_b.back().size()); to_b.clear();
+    client.receive_packet(to_a.back().data(), to_a.back().size()); to_a.clear();
+    server.receive_packet(to_b.back().data(), to_b.back().size()); to_b.clear();
+
+    if (client.state() != TCPState::ESTABLISHED) { fail(name, "handshake failed"); return; }
+
+    // Build a valid RST from server to client (RST only, no ACK).
+    IPv4Header ip{};
+    ip.version_ihl    = (4u << 4u) | 5u;
+    ip.tos            = 0;
+    ip.total_length   = IPV4_HDR_LEN + TCP_HDR_LEN;
+    ip.identification = 0;
+    ip.flags_frag     = 0x4000u;
+    ip.ttl            = 64;
+    ip.protocol       = IPPROTO_TCP_V;
+    ip.src_ip         = htonl(IP_S);
+    ip.dst_ip         = htonl(IP_C);
+    ip.checksum       = 0;
+
+    TCPHeader rst{};
+    rst.src_port             = PORT_S;
+    rst.dst_port             = PORT_C;
+    rst.seq_num              = ISN_S + 1;  // server snd_nxt_ after handshake
+    rst.ack_num              = 0;
+    rst.data_offset_reserved = tcp_pack_data_offset(5);
+    rst.flags                = TCP_FLAG_RST;
+    rst.window               = 0;
+    rst.urgent_ptr           = 0;
+
+    uint8_t buf[IPV4_HDR_LEN + TCP_HDR_LEN];
+    size_t n = ipv4_encode(ip, buf, sizeof(buf));
+    n += tcp_encode(ip, rst, nullptr, 0, buf + n, sizeof(buf) - n);
+    client.receive_packet(buf, n);
+
+    if (client.state() != TCPState::CLOSED) { fail(name, "client not CLOSED after RST"); return; }
+    if (!error_fired) { fail(name, "error callback not fired on RST"); return; }
+    pass(name);
+}
+
+// ── Zero-window persist probe ─────────────────────────────────────────────────
+
+static void test_zero_window_probe() {
+    const char* name = "Zero-window: persist probe sent when peer window is closed";
+
+    std::vector<std::vector<uint8_t>> to_b, to_a;
+
+    constexpr uint32_t IP_C  = 0x0a000001u;
+    constexpr uint32_t IP_S  = 0x0a000002u;
+    constexpr uint16_t PORT_C = 54316;
+    constexpr uint16_t PORT_S = 8085;
+    constexpr uint32_t ISN_C  = 300;
+    constexpr uint32_t ISN_S  = 400;
+
+    TCPConnection client(htonl(IP_C), PORT_C, htonl(IP_S), PORT_S,
+                         [&to_b](const uint8_t* buf, size_t len) {
+                             to_b.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, ISN_C);
+    TCPConnection server(htonl(IP_S), PORT_S, htonl(IP_C), PORT_C,
+                         [&to_a](const uint8_t* buf, size_t len) {
+                             to_a.push_back(std::vector<uint8_t>(buf, buf + len));
+                         },
+                         nullptr, ISN_S);
+
+    // Manual handshake.
+    server.listen();
+    client.connect();
+    server.receive_packet(to_b.back().data(), to_b.back().size()); to_b.clear();
+    client.receive_packet(to_a.back().data(), to_a.back().size()); to_a.clear();
+    server.receive_packet(to_b.back().data(), to_b.back().size()); to_b.clear();
+
+    if (client.state() != TCPState::ESTABLISHED) { fail(name, "handshake failed"); return; }
+
+    // Client sends 4 bytes; data sits in the retransmit queue.
+    const uint8_t data[] = {'d', 'a', 't', 'a'};
+    if (client.send(data, 4) != 4) { fail(name, "send rejected data"); return; }
+    to_b.clear();  // discard the segment (do not deliver to server)
+
+    // Deliver a fake window=0 ACK from server that acks nothing new.
+    // process_ack rejects it as a duplicate, but snd_wnd_ is still updated to 0.
+    IPv4Header fake_ip{};
+    fake_ip.version_ihl    = (4u << 4u) | 5u;
+    fake_ip.tos            = 0;
+    fake_ip.total_length   = IPV4_HDR_LEN + TCP_HDR_LEN;
+    fake_ip.identification = 0;
+    fake_ip.flags_frag     = 0x4000u;
+    fake_ip.ttl            = 64;
+    fake_ip.protocol       = IPPROTO_TCP_V;
+    fake_ip.src_ip         = htonl(IP_S);
+    fake_ip.dst_ip         = htonl(IP_C);
+    fake_ip.checksum       = 0;
+
+    TCPHeader fake_ack{};
+    fake_ack.src_port             = PORT_S;
+    fake_ack.dst_port             = PORT_C;
+    fake_ack.seq_num              = ISN_S + 1;  // server snd_nxt_
+    fake_ack.ack_num              = ISN_C + 1;  // acks nothing new (snd_una_ stays put)
+    fake_ack.data_offset_reserved = tcp_pack_data_offset(5);
+    fake_ack.flags                = TCP_FLAG_ACK;
+    fake_ack.window               = 0;           // ZERO window
+    fake_ack.urgent_ptr           = 0;
+
+    uint8_t ack_buf[IPV4_HDR_LEN + TCP_HDR_LEN];
+    size_t n = ipv4_encode(fake_ip, ack_buf, sizeof(ack_buf));
+    n += tcp_encode(fake_ip, fake_ack, nullptr, 0, ack_buf + n, sizeof(ack_buf) - n);
+    client.receive_packet(ack_buf, n);
+
+    // tick() past RTO_INITIAL should trigger a persist probe instead of a
+    // normal retransmit. The probe must use seq = snd_una_ (ISN_C + 1), not
+    // snd_nxt_ (ISN_C + 5), and must not abort the connection.
+    auto now = std::chrono::steady_clock::now() + RTO_INITIAL + std::chrono::milliseconds{1};
+    client.tick(now);
+
+    if (to_b.empty()) { fail(name, "no probe sent after persist timeout"); return; }
+
+    TCPHeader probe_tcp{};
+    const auto& probe = to_b.back();
+    if (!tcp_decode(probe.data() + IPV4_HDR_LEN, probe.size() - IPV4_HDR_LEN, probe_tcp)) {
+        fail(name, "could not decode probe TCP header"); return;
+    }
+    if (probe_tcp.seq_num != ISN_C + 1) {
+        fail(name, ("probe seq wrong: expected " + std::to_string(ISN_C + 1) +
+                    ", got " + std::to_string(probe_tcp.seq_num)).c_str());
+        return;
+    }
+    if (client.state() != TCPState::ESTABLISHED) {
+        fail(name, "client must stay ESTABLISHED during zero-window persist"); return;
+    }
+    pass(name);
+}
+
 // ── Retransmit timer integration ──────────────────────────────────────────────
 
 // When a segment is not acknowledged, tick() must retransmit it.
@@ -458,6 +724,21 @@ int main() {
     test_teardown_a_closes_first();
     test_teardown_simultaneous_close();
     test_time_wait_expires();
+
+    std::cout << "\n  -- close() return value --\n";
+    test_close_invalid_state_returns_false();
+
+    std::cout << "\n  -- Error callback --\n";
+    test_error_callback_fires_on_abort();
+
+    std::cout << "\n  -- Checksum validation --\n";
+    test_corrupt_packet_dropped();
+
+    std::cout << "\n  -- RST error callback --\n";
+    test_rst_calls_error_callback();
+
+    std::cout << "\n  -- Zero-window persist --\n";
+    test_zero_window_probe();
 
     std::cout << "\n  -- Retransmit integration --\n";
     test_retransmit_fires_on_timeout();
