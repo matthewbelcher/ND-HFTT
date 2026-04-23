@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-class TAQ():
+class OptionsData():
     def __init__(self, ticker_symbol, start_year, end_year, output_path):
         self.ticker_symbol = ticker_symbol
         self.start = start_year
@@ -15,6 +15,26 @@ class TAQ():
     
     def close(self):
         self.conn.close()
+
+    def get_SP500_daily(self, secid, year):
+        library = "optionm"
+        table = f"secprd{year}"
+        # print(self.conn.describe_table(library, table))
+        return self.conn.raw_sql(f"""
+            SELECT 
+                date, 
+                close AS SP500_close, 
+                return AS SP500_daily_simple_return, 
+                open AS SP500_open, 
+                high AS SP500_high, 
+                low AS SP500_low
+            FROM {library}.{table}
+            WHERE secid = {secid}
+        """)
+
+    def get_underlying_data(self, secid, year):
+        df = self.get_SP500_daily(secid, year)
+        return df 
 
     def ticker_to_id(self, ticker):
         """
@@ -27,8 +47,10 @@ class TAQ():
         ''')
         print(df)
         """
-        # This just returns the secid of SPY for now
-        return 109820
+        
+        # SPY ID: 109820 (S&500 Option (American))
+        # SPX ID: 108105 (S&500 Option (European))
+        return 108105
 
     def plot_volatility_surface(self, entries):
         surface = entries.pivot_table(
@@ -53,7 +75,7 @@ class TAQ():
 
         plt.show()
 
-    def get_volatility_surface(self, secid, year):
+    def get_volatility_surface(self, secid, year, cp_flag):
         # volatility_surface_YYYY
         # tick_volatility_surface_YYYY
         # print(self.conn.describe_table("optionm", "vsurfd2025"))
@@ -67,168 +89,153 @@ class TAQ():
         library = "optionm"
         table = f"vsurfd{year}"
         return self.conn.raw_sql(f"""
-        SELECT *
-        FROM {library}.{table}
-        WHERE impl_volatility IS NOT NULL
-        AND secid = {secid}
+            SELECT date, 
+                   days AS days_to_exp, 
+                   delta, 
+                   impl_volatility, 
+                   impl_strike, 
+                   impl_premium
+            FROM {library}.{table}
+            WHERE impl_volatility IS NOT NULL
+            AND cp_flag = '{cp_flag}'
+            AND secid = {secid}
         """)
 
-    def get_option_price_tables(self):
-        # option_price_YYYY
-        # option_price_view
-        # std_option_price_*
-        # tick_option_price_()
-        pass
+    def get_options_data(self, secid, year):
+        df = self.get_volatility_surface(secid, year, "C")
 
-    def get_raw_option_data(self):
-        # opprcdYYYY
-        pass
+        # self.plot_volatility_surface(df[(df["date"] == "2025-01-02") & (df["cp_flag"] == "C")])
 
-    def get_underlying_price(self):
-        # security_price
-        # secprdYYYY
-        pass
+        return df
 
-    def get_options_data(self):
-        # print(self.conn.list_tables("optionm"))
-        secid = self.ticker_to_id("SPY")
+    def get_daily_risk_free_rate(self):
+        library = "optionm"
+        table = f"zerocd"
+        return self.conn.raw_sql(f"""
+            SELECT date,
+                   days AS rate_days,
+                   rate / 100.00 AS risk_free_rate
+            FROM {library}.{table}
+            WHERE date BETWEEN '{self.start}-01-01' AND '{self.end}-12-31'
+            ORDER BY date, rate_days
+        """)
+
+    def add_rates_to_df(self):
+        """
+            Attach interpolated zero-curve rates to each surface row.
+            Risk-free rate days until maturity may not align with option days until maturity
+            so the equivalent risk-free rate must be interpolated.
+        """
+        if self.df.empty:
+            return
+
+        rates_df = self.get_daily_risk_free_rate().copy()
+
+        if rates_df.empty:
+            self.df = self.df.copy()
+            self.df["risk_free_rate"] = np.nan
+            return
+
+        self.df = self.df.copy()
+        self.df["date"] = pd.to_datetime(self.df["date"])
+        rates_df["date"] = pd.to_datetime(rates_df["date"])
+
+        rates_by_date = {}
+        for date, grp in rates_df.groupby("date"):
+            curve = (
+                grp[["rate_days", "risk_free_rate"]]
+                .dropna()
+                .sort_values("rate_days")
+            )
+            if curve.empty:
+                continue
+
+            x = curve["rate_days"].to_numpy(dtype=float)
+            y = curve["risk_free_rate"].to_numpy(dtype=float)
+
+            # Remove duplicate maturities so interpolation gets a clean curve.
+            x_unique, idx = np.unique(x, return_index=True)
+            y_unique = y[idx]
+            rates_by_date[date] = (x_unique, y_unique)
+
+        out = []
+        for date, group in self.df.groupby("date"):
+            group = group.copy()
+            curve = rates_by_date.get(date)
+
+            if curve is None:
+                group["risk_free_rate"] = np.nan
+            else:
+                x, y = curve
+                d = group["days_to_exp"].to_numpy(dtype=float)
+                # np.interp linearly interpolates and clamps out-of-range maturities.
+                group["risk_free_rate"] = np.interp(d, x, y)
+
+            out.append(group)
+
+        if out:
+            self.df = (
+                pd.concat(out, ignore_index=True)
+                .sort_values(["date", "days_to_exp", "delta"])
+                .reset_index(drop=True)
+            )
+        else:
+            self.df["risk_free_rate"] = np.nan
+
+
+    def get_daily_vix(self):
+        library = "cboe_all"
+        table = "cboe"
+
+        return self.conn.raw_sql(f"""
+            SELECT date, vix, vixo, vixh, vixl
+            FROM {library}.{table}
+            WHERE date BETWEEN '{self.start}-01-01' AND '{self.end}-12-31';
+        """)
+
+    def collect_data(self):
+        secid = self.ticker_to_id(self.ticker_symbol)
+
         dfs = []
         for year in range(int(self.start), int(self.end)+1):
-            df = self.get_volatility_surface(secid, year)
+            underlying_df = self.get_underlying_data(secid, year)
+            options_df = self.get_options_data(secid, year)
 
-            # Filter by call options only
-            df = df[(df["cp_flag"] == "C")]
+            df = pd.merge(underlying_df, options_df, on="date")
+
+            # self.get_daily_vix()
 
             if not df.empty:
                 dfs.append(df)
 
-        
         self.df = pd.concat(dfs, ignore_index=True)
-        self.df = self.df.drop(columns=["secid", "cp_flag"])
+
+        self.add_rates_to_df()
+
+        vix_df = self.get_daily_vix()
+        self.df["date"] = pd.to_datetime(self.df["date"])
+        vix_df["date"] = pd.to_datetime(self.df["date"])
+
+        # There are two entries missing, just ffill
+        vix_df[["vix", "vixo", "vixh", "vixl"]] = vix_df[["vix", "vixo", "vixh", "vixl"]].ffill()
+
+        self.df = pd.merge(self.df, vix_df, on="date")
 
         self.save_data("all_data.xlsx")
-
-        # self.plot_volatility_surface(df[(df["date"] == "2025-01-02") & (df["cp_flag"] == "C")])
-        # self.get_option_price_tables()
-        # self.get_raw_option_data()
-        # self.get_underlying_price()
-        pass
-
-    def collect_data(self):
-        # self.get_underlying_data()
-        self.get_options_data()
     
     def save_data(self, filename):
         self.df.to_excel(self.output_path / filename)
-
-    """
-    # Possible future expansion
-    def get_trades(self):
-        #   1) ctm_[YYYYMMDD] --> Trades (Core Data)
-        #       Use for returns, realized volatility, trade intensity
-
-        # Table Columns
-        # date = Trade Date
-        # time_m = Trade time (second resolution)
-        # time_m_nano = Trade time (nanosecond resolution) 
-        # sym_root = Ticker Symbol
-        # ex = Exchange where trade occurred
-        # price = Trade Price
-        # size = Number of shares traded
-        # tr_scond = Sale condition code (Filter by regular trades only)
-        # tr_corr = Correction Indicator (Keep only valid, non-corrected, trades)
-        # tr_stop_ind = Stop Trade Indicator (Marks special trade types, usually ignore or filter out)
-        # tr_rf = Trade reporting facility flags (Used to filter out off-exchange trades)
-
-        # tr_scond most common types:
-        #       tr_scond   count
-        # 0         I  295975 <-- Intermarket sweep orders
-        # 1       F I  152889 
-        # 2      <NA>  118200 <-- These are the standard orders
-        # 3         F  110863 
-        # 4        TI   14747
-        # ...
-
-        # tr_corr   count
-        # 0      00  720933
-        # 1      10       5
-        # 2      08       5
-        # 3      01       1
-        # 4      12       1
-
-        # No need to filter this one
-        #   tr_stop_ind   count
-        # 0           N  720945
-
-        #   tr_rf   count
-        # 0  <NA>  459512 <-- normal trades
-        # 1     T  254411 <-- off-exchange trades (i.e. dark pools)
-        # 2     N    4633
-        # 3     B    2389
-
-        library = "taqm_2025"
-        table = "ctm_20250110"
-
-        sql = f'''SELECT date, time_m, time_m_nano, sym_root, ex, price, size, tr_scond, tr_corr, tr_stop_ind, tr_rf
-                  FROM {library}.{table}
-                  WHERE sym_root = '{self.ticker_symbol}'
-                  AND tr_scond IS NULL
-                  AND tr_corr = '00'
-                  AND (tr_rf IS NULL OR tr_rf = 'T'); 
-        '''
-        return self.conn.raw_sql(sql)
-
-    
-    def get_quotes(self):
-        #   2) cqm_[YYYYMMDD] --> Quotes (Bid Price, Ask Price, Sizes)
-        #           Use for spread (ask - bid), midprice (bid + ask) / 2
-
-        # print(self.conn.describe_table("taqm_2025", table="cqm_20250110"))
-        # TODO: Skip for now, can add this later to provide the model with extra context
-        pass
-
-    def get_nbbo(self):
-        #   3) complete_nbbo_[YYYYMMDD] --> Best quotes
-        #       Use for nbbo
-        pass
-    
-    def get_metadata(self):
-        #   4) mastm_[YYYYMMDD] --> Metadata
-        #       Use for filter stocks and map symbols
-        pass
-
-    def get_luld(self):
-        #   5) luld_[YYYYMMDD] --> Limit Up / Limit Down
-        #       Trading halts, price bands
-        pass
-
-    def get_wct(self):
-        #   6) wct_[YYYYMMDD] --> Weighted / Cleaned Trades
-        #       Processed version of trades
-        pass
-
-    def get_underlying_data(self):
-        df = self.get_trades()
-        self.get_quotes()
-        self.get_nbbo()
-        self.get_metadata()
-        self.get_luld()
-        self.get_wct()
-    """
-
+        print(f"Dataframe saved to {self.output_path / filename}")
 
 if __name__ == "__main__":
-    start_year  = "1996"
+    start_year  = "2005"
     end_year    = "2025"
-    ticker_symbol = "SPY"
+    ticker_symbol = "SPX"
 
     BASE_DIR = Path(__file__).resolve().parent
     output_path = BASE_DIR / "raw"
     output_path.mkdir(parents=True, exist_ok=True)
 
-    taq = TAQ(ticker_symbol, start_year, end_year, output_path)
-    taq.collect_data()
-    taq.close()
-
-
-
+    od = OptionsData(ticker_symbol, start_year, end_year, output_path)
+    od.collect_data()
+    od.close()
