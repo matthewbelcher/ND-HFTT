@@ -33,7 +33,7 @@ class TrainingConfig:
     weight_decay: float = 1e-4
     num_epochs: int = 25
     patience: int = 5
-    device: str = "cpu"
+    device: str = "cuda"
     patch_len: int = 16
     stride: int = 8
     d_model: int = 128
@@ -73,6 +73,40 @@ def _describe_device(device: torch.device) -> str:
         device_name = torch.cuda.get_device_name(device_index)
         return f"{device} ({device_name})"
     return str(device)
+
+
+def _resolve_device(device_preference: str | torch.device | None) -> torch.device:
+    if isinstance(device_preference, torch.device):
+        device = device_preference
+    else:
+        requested = (device_preference or "cuda").strip().lower()
+        if requested == "auto":
+            if torch.cuda.is_available():
+                return torch.device("cuda")
+            if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+                return torch.device("mps")
+            return torch.device("cpu")
+        device = torch.device(requested)
+
+    if device.type == "cuda" and not torch.cuda.is_available():
+        torch_version = getattr(torch, "__version__", "unknown")
+        cuda_runtime = getattr(torch.version, "cuda", None)
+        if cuda_runtime is None:
+            raise RuntimeError(
+                "CUDA was requested, but torch.cuda.is_available() is False. "
+                f"Installed torch build: {torch_version} (CPU-only). "
+                "Install a CUDA-enabled PyTorch wheel in this environment."
+            )
+        raise RuntimeError(
+            "CUDA was requested, but torch.cuda.is_available() is False. "
+            f"Installed torch build: {torch_version} (CUDA runtime {cuda_runtime}). "
+            "Verify your NVIDIA driver and PyTorch CUDA install match."
+        )
+    if device.type == "mps" and not (
+        hasattr(torch.backends, "mps") and torch.backends.mps.is_available()
+    ):
+        raise RuntimeError("MPS was requested, but torch.backends.mps.is_available() is False.")
+    return device
 
 
 def _plot_fold_history(
@@ -251,7 +285,7 @@ def run_walk_forward_validation(config: TrainingConfig) -> dict[str, object]:
         step_size=config.step_size,
         min_train_size=config.min_train_size,
     )
-    device = torch.device(config.device)
+    device = _resolve_device(config.device)
     loss_fn = nn.MSELoss()
 
     print(f"Using device: {_describe_device(device)}")
@@ -376,7 +410,7 @@ def train_final_and_test(config: TrainingConfig) -> dict[str, object]:
         step_size=config.step_size,
         min_train_size=config.min_train_size,
     )
-    device = torch.device(config.device)
+    device = _resolve_device(config.device)
     loss_fn = nn.MSELoss()
 
     print(f"Using device: {_describe_device(device)}")
@@ -445,12 +479,7 @@ def train_final_and_test(config: TrainingConfig) -> dict[str, object]:
 
 
 if __name__ == "__main__":
-    if torch.cuda.is_available():
-        device = "cuda"
-    elif torch.backends.mps.is_available():
-        device = "mps"
-    else:
-        device = "cpu"
+    _resolve_device("cuda")
     config = TrainingConfig(
         data_path=PROJECT_DIR / "data" / "raw" / "all_data.xlsx",
     )
