@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signal Bazaar Terminal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <header class="topbar">
+      <div>
+        <p class="kicker">Distributed Prediction Market</p>
+        <h1>Signal Bazaar Terminal</h1>
+      </div>
+      <div class="topbar-meta">
+        <div class="stat-card">
+          <span>Live Markets</span>
+          <strong id="metric-live-markets">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Selected</span>
+          <strong id="metric-selected-market">None</strong>
+        </div>
+        <div class="stat-card accent">
+          <span>Last Refresh</span>
+          <strong id="metric-last-refresh">Booting</strong>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="terminal-panel market-rail">
+        <div class="panel-title-row">
+          <h2>Market Tape</h2>
+          <span class="panel-tag">LIVE</span>
+        </div>
+        <label class="search-shell">
+          <span>Search</span>
+          <input id="market-search" type="search" placeholder="election, fed, weather" />
+        </label>
+        <div id="market-list" class="market-list"></div>
+      </aside>
+
+      <main class="terminal-main">
+        <section class="terminal-panel account-shell">
+          <div class="panel-title-row">
+            <div>
+              <h2>Account Router</h2>
+              <p id="session-summary" class="muted">No active user session.</p>
+            </div>
+            <button id="logout-button" class="ghost-button hidden" type="button">Log Out</button>
+          </div>
+          <div class="account-grid">
+            <form id="signup-form" class="auth-card">
+              <h3>Retail Signup</h3>
+              <label><span>Username</span><input name="username" type="text" required maxlength="128" /></label>
+              <label><span>Password</span><input name="password" type="password" required minlength="8" /></label>
+              <button type="submit">Open Wallet</button>
+            </form>
+            <form id="login-form" class="auth-card">
+              <h3>Trader Login</h3>
+              <label><span>Username</span><input name="username" type="text" required maxlength="128" /></label>
+              <label><span>Password</span><input name="password" type="password" required minlength="8" /></label>
+              <button type="submit">Enter Terminal</button>
+            </form>
+            <div class="auth-card account-chip-card">
+              <h3>Current Session</h3>
+              <div id="account-chip" class="account-chip empty">Awaiting login</div>
+              <div id="balance-strip" class="balance-strip"></div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="view-nav">
+          <button class="view-tab active" data-view="market" type="button">Market</button>
+          <button class="view-tab" data-view="portfolio" type="button">Positions</button>
+          <button class="view-tab" data-view="wallet" type="button">Wallet</button>
+          <button class="view-tab" data-view="admin" type="button">Admin</button>
+        </nav>
+
+        <section id="view-market" class="view-panel active">
+          <div class="grid-two">
+            <section class="terminal-panel spotlight-panel">
+              <div class="panel-title-row">
+                <div>
+                  <h2 id="market-title">Choose a market</h2>
+                  <p id="market-description" class="muted">Select a market from the tape to inspect price action and depth.</p>
+                </div>
+                <div class="badge-strip">
+                  <span id="market-status-badge" class="status-badge">No market</span>
+                  <span id="market-price-badge" class="status-badge accent">-</span>
+                </div>
+              </div>
+              <div class="chart-shell">
+                <canvas id="history-chart" width="1100" height="360"></canvas>
+              </div>
+            </section>
+
+            <div class="stack-shell">
+              <section class="terminal-panel book-panel">
+                <div class="panel-title-row">
+                  <h2>Depth</h2>
+                  <span class="panel-tag">BOOK</span>
+                </div>
+                <div class="book-columns">
+                  <div>
+                    <h3>YES</h3>
+                    <div id="yes-book" class="book-list"></div>
+                  </div>
+                  <div>
+                    <h3>NO</h3>
+                    <div id="no-book" class="book-list"></div>
+                  </div>
+                </div>
+              </section>
+
+              <form id="trade-form" class="terminal-panel trade-ticket">
+                <div class="panel-title-row">
+                  <h2>Trade Ticket</h2>
+                  <span class="panel-tag">ORDER</span>
+                </div>
+                <label><span>Side</span><select name="side"><option value="YES">Buy YES</option><option value="NO">Buy NO</option></select></label>
+                <label><span>Quantity</span><input name="qty" type="number" min="1" step="1" value="1" required /></label>
+                <label><span>Price (cents)</span><input name="price_cents" type="number" min="1" max="99" step="1" value="50" required /></label>
+                <label><span>Time in Force</span><select name="time_in_force"><option value="GTC">GTC</option><option value="IOC">IOC</option><option value="FOK">FOK</option></select></label>
+                <button type="submit">Route Order</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-portfolio" class="view-panel">
+          <div class="grid-three">
+            <section class="terminal-panel">
+              <div class="panel-title-row"><h2>Current Positions</h2><span class="panel-tag">POS</span></div>
+              <div id="positions-list" class="stack-list"></div>
+            </section>
+            <section class="terminal-panel">
+              <div class="panel-title-row"><h2>Open Orders</h2><span class="panel-tag">WORKING</span></div>
+              <div id="open-orders-list" class="stack-list"></div>
+            </section>
+            <section class="terminal-panel">
+              <div class="panel-title-row"><h2>Recent Prints</h2><span class="panel-tag">T&S</span></div>
+              <div id="recent-trades-list" class="stack-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-wallet" class="view-panel">
+          <div class="grid-two wallet-grid">
+            <section class="terminal-panel">
+              <div class="panel-title-row"><h2>Wallet Over Time</h2><span class="panel-tag">P/L</span></div>
+              <div class="chart-shell"><canvas id="wallet-chart" width="1100" height="360"></canvas></div>
+            </section>
+            <section class="terminal-panel">
+              <div class="panel-title-row"><h2>Wallet Tape</h2><span class="panel-tag">LEDGER</span></div>
+              <div id="wallet-events" class="stack-list wallet-events"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-admin" class="view-panel">
+          <div id="admin-login-shell" class="terminal-panel admin-login-shell">
+            <div class="panel-title-row"><h2>Admin Login</h2><span class="panel-tag">RESTRICTED</span></div>
+            <p class="muted">Use the separate admin account to create, halt, close, and resolve markets.</p>
+            <form id="admin-login-form" class="auth-card inline-form">
+              <label><span>Admin Username</span><input name="username" type="text" value="admin" required /></label>
+              <label><span>Admin Password</span><input name="password" type="password" value="MarketAdmin!2026Forever" required /></label>
+              <button type="submit">Enter Admin Console</button>
+            </form>
+            <p class="admin-hint">Default EC2 admin credentials: <code>admin</code> / <code>MarketAdmin!2026Forever</code></p>
+          </div>
+
+          <div id="admin-console" class="grid-three hidden">
+            <form id="admin-create-market-form" class="terminal-panel admin-form">
+              <div class="panel-title-row"><h2>Create Market</h2><span class="panel-tag">NEW</span></div>
+              <label><span>Title</span><input name="title" type="text" required /></label>
+              <label><span>Slug</span><input name="slug" type="text" placeholder="auto-if-empty" /></label>
+              <label><span>Description</span><textarea name="description" rows="5"></textarea></label>
+              <label><span>Status</span><select name="status"><option value="DRAFT">DRAFT</option><option value="ACTIVE">ACTIVE</option></select></label>
+              <label><span>Close Time (ISO)</span><input name="close_time" type="text" placeholder="2026-05-01T18:00:00+00:00" /></label>
+              <label><span>Resolve Time (ISO)</span><input name="resolve_time" type="text" placeholder="2026-05-01T19:00:00+00:00" /></label>
+              <button type="submit">Create Market</button>
+            </form>
+            <form id="admin-market-status-form" class="terminal-panel admin-form">
+              <div class="panel-title-row"><h2>Status Update</h2><span class="panel-tag">STATE</span></div>
+              <label><span>Market ID</span><input id="admin-market-id" name="market_id" type="text" readonly /></label>
+              <label><span>New Status</span><select name="new_status"><option value="ACTIVE">ACTIVE</option><option value="HALTED">HALTED</option><option value="CLOSED">CLOSED</option><option value="CANCELLED">CANCELLED</option></select></label>
+              <button type="submit">Apply Status</button>
+            </form>
+            <form id="admin-resolve-market-form" class="terminal-panel admin-form">
+              <div class="panel-title-row"><h2>Resolve Market</h2><span class="panel-tag">SETTLE</span></div>
+              <label><span>Market ID</span><input id="admin-resolve-market-id" name="market_id" type="text" readonly /></label>
+              <label><span>Outcome</span><select name="outcome"><option value="YES">YES</option><option value="NO">NO</option><option value="CANCELLED">CANCELLED</option></select></label>
+              <label><span>Notes</span><textarea name="notes" rows="5" placeholder="resolution notes"></textarea></label>
+              <button type="submit">Resolve Market</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="flash" class="flash hidden"></div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

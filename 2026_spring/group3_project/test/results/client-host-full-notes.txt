@@ -1,0 +1,52 @@
+Benchmark: Client-Host Submit Scaling Test
+
+Files:
+- CSV: test/results/client-host-full.csv
+- Graph: test/results/client-host-full.png
+
+What the CSV represents:
+- Each row is one benchmark point at a fixed number of concurrent clients.
+- clients: number of concurrent client connections generating load.
+- target_orders_per_second_per_client: intended send rate per client.
+- orders_per_client: number of orders each client attempted to submit for that point.
+- total_orders_sent: total orders issued by the load generator.
+- total_orders_acked: total responses received from the listener.
+- ok_orders: successful accepted submissions.
+- error_count: failed submissions.
+- wall_time_sec: elapsed wall-clock time from starting the point until all acknowledgements were received.
+- avg_throughput_ops: successful orders divided by wall-clock time.
+- avg_latency_ms: average client-observed submit latency in milliseconds.
+- p50_latency_ms: median client-observed submit latency.
+- p95_latency_ms: 95th percentile client-observed submit latency.
+- max_latency_ms: worst observed submit latency.
+
+What the graph represents:
+- The top plot shows average throughput as client count increases.
+- The bottom plot shows average latency as client count increases.
+- In this run, throughput rises quickly at small client counts and then plateaus near roughly 175 orders/second.
+- Latency continues rising sharply after throughput plateaus, which indicates the server side is saturated and additional concurrency mostly increases queueing delay.
+
+How the test was performed:
+- Architecture:
+  - Server EC2 hosted the dedicated benchmark listener on port 9501.
+  - Client EC2 generated load over the private VPC network to the server EC2 private IP.
+- Authentication / setup:
+  - The benchmark created temporary test accounts and benchmark markets in DSQL.
+  - Accounts were funded so lack of cash would not limit order acceptance.
+- Traffic model:
+  - Each client kept a persistent TCP connection to the listener.
+  - Each client attempted to send 1000 orders/second.
+  - Each point used 200 orders per client.
+  - Client counts tested: 1, 2, 4, 8, 12, 16, 24, 32, 48, 64.
+- Order model:
+  - Submit-only workload.
+  - Orders were intended to be entered into the system; they did not need to match.
+  - Orders used YES side, qty=1, price_cents=60, time_in_force=GTC.
+- Latency measurement:
+  - Measured at the client as submit round-trip time from write/send to acknowledgement received.
+  - This corresponds to the time for the listener to validate the request, authenticate the account session, update account cash locks, insert the order row, insert the ledger entry, and return the acknowledgement.
+
+Interpretation:
+- The separate client EC2 reduces the chance that the load generator itself is the limiting factor.
+- The observed plateau around 175 orders/second suggests a bottleneck on the server/database path rather than on the client host.
+- Rising p95 and max latency at higher client counts indicate queue buildup and contention under load.

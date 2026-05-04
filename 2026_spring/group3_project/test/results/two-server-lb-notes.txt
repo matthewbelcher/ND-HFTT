@@ -1,0 +1,30 @@
+Benchmark: Two-Server Submit Scaling Test Through NLB
+
+Files:
+- CSV: test/results/two-server-lb.csv
+- Graph: test/results/two-server-lb.png
+- Notes: test/results/two-server-lb-notes.txt
+
+What this dataset represents:
+- This run measures order-submit throughput and client-observed submit latency while routing traffic through an AWS Network Load Balancer.
+- The NLB listener was on port 80 and forwarded TCP traffic to two EC2 instances listening on port 9000.
+- The CSV fields have the same meaning as the earlier single-server benchmark: clients, orders per client, total orders sent/acked, successful orders, wall time, average throughput, average latency, p50, p95, and max latency.
+- The server_count column is 1 because the load generator targeted one load balancer endpoint, but the backend fleet for this test was two EC2 listener instances behind that endpoint.
+
+How the test was performed:
+- One client EC2 generated the load.
+- Two server EC2 instances ran the client-listener service on port 9000 behind the NLB.
+- Both listener instances were started under an auto-refresh supervisor so DSQL auth tokens were renewed outside the benchmark window.
+- The benchmark created temporary accounts and markets in DSQL.
+- Each client maintained a persistent TCP connection.
+- Each client attempted to send 1000 orders per second.
+- Each benchmark point used 200 orders per client.
+- Client counts tested: 1, 2, 4, 8, 12, 16, 24, 32, 48, 64.
+- Orders were submit-only and did not need to match.
+- Orders used YES side, qty=1, price_cents=60, time_in_force=GTC.
+- Latency was measured at the client as round-trip time from submit send to acknowledgement received.
+
+Interpretation:
+- Compared with the earlier single-server run, the two-server NLB-backed setup increased peak observed throughput from roughly 175 ops/s to roughly 200 ops/s.
+- Latency still rises sharply as client count grows, which suggests the backend database path remains the dominant bottleneck even after adding a second listener server.
+- The modest throughput gain indicates listener horizontal scaling helps somewhat, but does not eliminate the deeper contention or database cost on the submit path.
