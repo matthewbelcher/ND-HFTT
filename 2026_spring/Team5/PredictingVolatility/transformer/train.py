@@ -16,7 +16,7 @@ PROJECT_DIR = Path(__file__).resolve().parent.parent
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 
-from transformer.dataset import build_walk_forward_dataloaders
+from transformer.dataset import build_walk_forward_dataloaders, option_collate_fn
 from transformer.model import PatchTSTConfig, PatchTSTSurfaceModel
 
 
@@ -143,14 +143,122 @@ def _plot_fold_history(
     plt.close(fig)
 
 
+def _plot_surface_comparison(
+    predicted_surface: np.ndarray,
+    actual_surface: np.ndarray,
+    maturities: np.ndarray,
+    deltas: np.ndarray,
+    output_path: Path,
+    title: str,
+) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    vmin = float(min(predicted_surface.min(), actual_surface.min()))
+    vmax = float(max(predicted_surface.max(), actual_surface.max()))
+
+    delta_grid, maturity_grid = np.meshgrid(deltas, maturities)
+    norm = matplotlib.colors.Normalize(vmin=vmin, vmax=vmax)
+    fig = plt.figure(figsize=(16, 6))
+    axes = [
+        fig.add_subplot(1, 2, 1, projection="3d"),
+        fig.add_subplot(1, 2, 2, projection="3d"),
+    ]
+
+    for ax, surface, panel_title in zip(
+        axes,
+        [predicted_surface, actual_surface],
+        ["Predicted Surface", "Actual Surface"],
+        strict=True,
+    ):
+        ax.plot_surface(
+            delta_grid,
+            maturity_grid,
+            surface,
+            cmap="viridis",
+            norm=norm,
+            linewidth=0,
+            antialiased=True,
+        )
+        ax.set_title(panel_title)
+        ax.set_xlabel("Delta")
+        ax.set_ylabel("Days to Expiration")
+        ax.set_zlabel("Implied Volatility")
+        ax.set_zlim(vmin, vmax)
+        ax.view_init(elev=28, azim=-125)
+
+    fig.suptitle(title)
+    colorbar = fig.colorbar(
+        matplotlib.cm.ScalarMappable(norm=norm, cmap="viridis"),
+        ax=axes,
+        shrink=0.82,
+        pad=0.08,
+    )
+    colorbar.set_label("Implied Volatility")
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    fig.savefig(output_path, dpi=150)
+    plt.close(fig)
+
+
+def _create_fold_surface_plot(
+    model: PatchTSTSurfaceModel,
+    fold,
+    device: torch.device,
+    output_path: Path,
+) -> dict[str, str]:
+    val_dataset = fold.val.dataset
+    sample = option_collate_fn([val_dataset[len(val_dataset) - 1]])
+    sample = _move_batch_to_device(sample, device)
+
+    with torch.no_grad():
+        predicted_delta_norm = model(
+            sample["surface_history"],
+            sample["rate_history"],
+            sample["feature_history"],
+        )[0].detach().cpu().numpy()
+
+    surface_history_norm = sample["surface_history"][0].detach().cpu().numpy()
+    actual_delta_norm = sample["target_surface_delta"][0].detach().cpu().numpy()
+    normalizer = fold.normalizer
+
+    surface_history = (
+        surface_history_norm * normalizer.surface_std[None, :, :]
+        + normalizer.surface_mean[None, :, :]
+    )
+    last_surface = surface_history[-1]
+    predicted_delta = predicted_delta_norm * normalizer.target_std + normalizer.target_mean
+    actual_delta = actual_delta_norm * normalizer.target_std + normalizer.target_mean
+
+    predicted_surface = last_surface + predicted_delta
+    actual_surface = last_surface + actual_delta
+
+    history_end_date = sample["history_end_date"][0]
+    target_date = sample["target_date"][0]
+    _plot_surface_comparison(
+        predicted_surface=predicted_surface,
+        actual_surface=actual_surface,
+        maturities=val_dataset.daily_data.maturities,
+        deltas=val_dataset.daily_data.deltas,
+        output_path=output_path,
+        title=(
+            f"Fold {fold.fold_id} Surface Prediction | "
+            f"history_end={history_end_date} | target={target_date}"
+        ),
+    )
+    return {
+        "history_end_date": history_end_date,
+        "target_date": target_date,
+        "surface_plot_path": str(output_path),
+    }
+
+
 def _print_epoch_metrics(
-    fold_id: int | str,
+    fold_label: str,
     epoch: int,
     train_metrics: dict[str, float],
     val_metrics: dict[str, float],
 ) -> None:
     print(
-        f"Fold {fold_id} | Epoch {epoch:03d} | "
+        f"Fold {fold_label} | Epoch {epoch:03d} | "
         f"train_loss={train_metrics['loss']:.6f} | "
         f"val_loss={val_metrics['loss']:.6f} | "
         f"val_mae={val_metrics['mae']:.6f} | "
@@ -293,10 +401,12 @@ def run_walk_forward_validation(config: TrainingConfig) -> dict[str, object]:
     fold_loaders = loader_bundle.folds
     if config.max_folds is not None:
         fold_loaders = fold_loaders[: config.max_folds]
+    total_folds = len(fold_loaders)
 
     fold_summaries: list[dict[str, object]] = []
 
     for fold in fold_loaders:
+        fold_label = f"{fold.fold_id}/{total_folds}"
         sample_batch = next(iter(fold.train))
         model = build_model_from_batch(sample_batch, config).to(device)
         optimizer = AdamW(model.parameters(), lr=config.lr, weight_decay=config.weight_decay)
@@ -327,7 +437,7 @@ def run_walk_forward_validation(config: TrainingConfig) -> dict[str, object]:
             epoch_history.append(epoch_record)
 
             if config.print_every_epoch:
-                _print_epoch_metrics(fold.fold_id, epoch, train_metrics, val_metrics)
+                _print_epoch_metrics(fold_label, epoch, train_metrics, val_metrics)
 
             if val_metrics["loss"] < best_val_loss:
                 best_val_loss = val_metrics["loss"]
@@ -357,6 +467,13 @@ def run_walk_forward_validation(config: TrainingConfig) -> dict[str, object]:
             plot_path,
             title=f"Fold {fold.fold_id} Training Curves",
         )
+        surface_plot_path = config.plot_dir / f"fold_{fold.fold_id:02d}_surface_comparison.png"
+        surface_plot_summary = _create_fold_surface_plot(
+            model=model,
+            fold=fold,
+            device=device,
+            output_path=surface_plot_path,
+        )
 
         fold_summary = {
             "fold_id": fold.fold_id,
@@ -366,18 +483,22 @@ def run_walk_forward_validation(config: TrainingConfig) -> dict[str, object]:
             "val_target_start": fold.val_target_start,
             "val_target_end": fold.val_target_end,
             "plot_path": str(plot_path),
+            "surface_plot_path": surface_plot_summary["surface_plot_path"],
+            "surface_history_end_date": surface_plot_summary["history_end_date"],
+            "surface_target_date": surface_plot_summary["target_date"],
             "history": epoch_history,
             **best_metrics,
         }
         fold_summaries.append(fold_summary)
 
         print(
-            f"Fold {fold.fold_id} complete | "
+            f"Fold {fold_label} complete | "
             f"best_epoch={best_epoch} | "
             f"best_val_loss={best_metrics['val_loss']:.6f} | "
             f"best_val_mae={best_metrics['val_mae']:.6f} | "
             f"best_val_rmse={best_metrics['val_rmse']:.6f} | "
-            f"plot={plot_path}"
+            f"plot={plot_path} | "
+            f"surface_plot={surface_plot_summary['surface_plot_path']}"
         )
 
     val_losses = np.array([fold["val_loss"] for fold in fold_summaries], dtype=float)
