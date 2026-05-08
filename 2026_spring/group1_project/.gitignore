@@ -1,0 +1,9 @@
+Trading Presentation.txt
+project-proposal.txt
+project-instructions.txt
+__pycache__/
+*.pyc
+.secrets/
+logs/
+3-Code/.local/
+3-Code/**/logs/

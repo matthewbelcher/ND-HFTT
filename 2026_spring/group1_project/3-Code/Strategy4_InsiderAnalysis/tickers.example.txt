@@ -1,0 +1,2 @@
+﻿# Example tickers
+KXSURVIVOR-26DEC31 # reality
