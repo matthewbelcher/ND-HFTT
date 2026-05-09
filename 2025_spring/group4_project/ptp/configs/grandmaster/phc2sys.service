@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync system clock to NIC hardware clock (PHC)
+After=network.target
+Wants=ptp4l.service
+
+[Service]
+ExecStart=/usr/sbin/phc2sys -c enp1s0f1 -s CLOCK_REALTIME -O 0 -m -w
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+click
+datetime
+graphviz
+jupyterlab
+matplotlib
+networkx
+pandas
+pydot
