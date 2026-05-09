@@ -37,14 +37,9 @@ buffers. This project focuses on recreating core TCP mechanisms in userspace, in
 * Sliding-window flow control
 * Connection teardown
 
-By implementing these features manually, the project demonstrates granular understanding of transport-layer networking
-and operating system internals.
 
 ---
 
-## Deliverables
-
-By April 29, 2026, I will produce:
 
 1. **Userspace TCP Library**
 
@@ -55,7 +50,7 @@ By April 29, 2026, I will produce:
 
 2. **Performance Evaluation**
 
-    * Latency comparison against standard Linux TCP
+    * Latency comparison against standard Linux TCP and Onload
     * Round-trip timing benchmarks
     * Analysis of performance improvements
 
@@ -65,50 +60,7 @@ By April 29, 2026, I will produce:
     * Implementation challenges
     * Debugging strategies
     * Performance results
-    * Lessons learned
 
-4. **Public GitHub Repository**
-
-    * Documented source code
-    * Build instructions
-    * Usage examples
 
 ---
 
-## Implementation Plan
-
-**Phase 1 – Research and Setup**
-Study TCP specifications (RFC 793), configure DPDK, and validate raw packet transmission.
-
-**Phase 2 – Packet Construction and Parsing**
-Implement Ethernet, IPv4, and TCP header generation and parsing. Send and receive raw TCP packets.
-
-**Phase 3 – TCP State Machine Implementation**
-Develop handshake logic, connection state transitions, retransmission handling, and ACK management.
-
-**Phase 4 – Flow Control and Messaging Layer**
-Implement sliding-window flow control and structured message exchange.
-
-**Phase 5 – Optimization and Benchmarking**
-Reduce memory copies, optimize buffer management, and benchmark performance against standard TCP.
-
----
-
-## Expected Challenges
-
-* Debugging at Layers 2–4 without kernel abstractions
-* Correct retransmission and timeout handling
-* NIC configuration and hardware compatibility
-* Ensuring memory safety without increasing latency
-
-These risks will be mitigated through incremental development, packet tracing tools (e.g., tcpdump/Wireshark), and
-validation against a standard TCP implementation.
-
----
-
-## Significance
-
-This project demonstrates advanced systems programming ability, deep understanding of networking internals, and
-performance engineering skills. It goes beyond application-level development by reengineering a core operating system
-subsystem for a specialized domain. The resulting system will showcase expertise in kernel bypass networking, memory
-management, and transport-layer protocol design.
