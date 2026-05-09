@@ -1,0 +1,67 @@
+# OS / editor noise
+.DS_Store
+._*
+.vscode/
+.idea/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Secrets and credentials
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+*credentials*.json
+*credential*.json
+*secret*.json
+*api_key*.json
+*cdp_api_key*.json
+!*.example.json
+!*example*.json
+
+# Build outputs
+build/
+collector/build/
+*.o
+*.out
+*.dSYM/
+
+# Local run state and logs
+*.log
+*.pid
+nohup.out
+prompts.txt
+notes.md
+
+# Generated analysis/model artifacts
+output/
+results/
+analysis/*.json
+!analysis/*.example.json
+!analysis/*example*.json
+*.parquet
+*.joblib
+*.pkl
+*.pickle
+
+# Bulky captured market data. Keep small samples elsewhere if needed.
+data/
+collector/rawdata/
+
+# Generated media / reports
+*.png
+*.pdf
