@@ -4,13 +4,11 @@ venv/
 .claude/
 
 # data and output (moved into code/)
-code/data_etf_pairs/
 code/data_v2/
 code/data_v2_rescaled/
 code/old_data/
 code/part3_output/
-code/part3_output_rescaled/
-code/plots/
+code/plots/old/
 code/results/
 
 # Python
