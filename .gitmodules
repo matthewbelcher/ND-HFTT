@@ -1,0 +1,3 @@
+[submodule "2026_spring/group7_project/EthernetRepeat-customOrder"]
+	path = 2026_spring/group7_project/EthernetRepeat-customOrder
+	url = https://github.com/ndhft/hft_group_7_FPGA
