@@ -1,0 +1,2269 @@
+{
+  "series": {
+    "KXNOTSEEKREELECTION": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:25.578617+00:00"
+    },
+    "KXTRUMPPOLLDAILY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:43:42.042007+00:00"
+    },
+    "KXTRUTHSOCIAL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:28:59.447403+00:00"
+    },
+    "KXSPOTIFYW": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:11.851338+00:00"
+    },
+    "KXSPOTIFYARTISTW": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:27.755089+00:00"
+    },
+    "KXSPOTIFYALBUMW": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:33.661054+00:00"
+    },
+    "KXTOPSONG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:39.485721+00:00"
+    },
+    "KXSPOTIFYARTISTD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:09.213205+00:00"
+    },
+    "KXSPOTIFYGLOBALD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:03.769415+00:00"
+    },
+    "KXSPOTIFYD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:06.491331+00:00"
+    },
+    "KXTOPALBUM": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-05-07T22:29:43.945552+00:00"
+    },
+    "KXBILLBOARDRUNNERUPSONG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:58.782148+00:00"
+    },
+    "KXBILLBOARDRUNNERUPALBUM": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:01.958818+00:00"
+    },
+    "KXPARDONSTRUMP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:06.615850+00:00"
+    },
+    "KXJUDGECOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:08.283673+00:00"
+    },
+    "KXHILLARYCONTEMPTVOTE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:10.652592+00:00"
+    },
+    "KXBILLSCOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:13.563533+00:00"
+    },
+    "KXBILLCONTEMPTVOTE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:16.391655+00:00"
+    },
+    "KXTOPMONTHLY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:28:04.931540+00:00"
+    },
+    "KXTOPMODEL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:28:09.810686+00:00"
+    },
+    "KXTOP10BILLBOARDSPOTSJC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:48.322888+00:00"
+    },
+    "KXTOP10BILLBOARDSPOTSBB": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:28:13.732888+00:00"
+    },
+    "KXSONGCHARTSJCOLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:28:30.879290+00:00"
+    },
+    "KXLLM1": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:59.465790+00:00"
+    },
+    "KXLAGODAYS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:28:35.830122+00:00"
+    },
+    "KXXRP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:29:18.086134+00:00"
+    },
+    "KXSOLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:51:54.446833+00:00"
+    },
+    "KXETH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:52:33.700195+00:00"
+    },
+    "KXDOGE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:53:09.157115+00:00"
+    },
+    "KXBTC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:53:46.669442+00:00"
+    },
+    "KXTNOTEW": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:53:58.511762+00:00"
+    },
+    "KXCBDECISIONKOREA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:55:14.198142+00:00"
+    },
+    "KXNETFLIXRANKSHOWRUNNERUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:17.853770+00:00"
+    },
+    "KXNETFLIXRANKSHOWGLOBAL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:50.439295+00:00"
+    },
+    "KXNETFLIXRANKSHOWGLOBAL2": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:59:16.143354+00:00"
+    },
+    "KXNETFLIXRANKSHOW": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:59:28.652134+00:00"
+    },
+    "KXNETFLIXRANKMOVIERUNNERUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:59:38.742069+00:00"
+    },
+    "KXNETFLIXRANKMOVIEGLOBAL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:59:47.973658+00:00"
+    },
+    "KXNETFLIXRANKMOVIEGLOBAL2": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:59:56.868065+00:00"
+    },
+    "KXNETFLIXRANKMOVIE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:19.655045+00:00"
+    },
+    "KXCBDECISIONCHINA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:08:26.569120+00:00"
+    },
+    "KXTNOTED": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:11:18.031159+00:00"
+    },
+    "KXWOSSKATE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T21:53:59.757773+00:00"
+    },
+    "KXWOSKIMTN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T21:54:10.502249+00:00"
+    },
+    "KXWOHOCKEY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:16:06.069423+00:00"
+    },
+    "KXWOFREESKI": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:16:28.847391+00:00"
+    },
+    "KXWOCURL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:16:53.014260+00:00"
+    },
+    "KXWOBOB": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:17:16.238581+00:00"
+    },
+    "KXWOMHOCKEYMVP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:19:00.213957+00:00"
+    },
+    "KXUSDJPY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:19:18.251223+00:00"
+    },
+    "KXEURUSD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:21:10.434916+00:00"
+    },
+    "KXNASCARRACE": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:25:47.184735+00:00"
+    },
+    "KXLOWTPHIL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:11:40.504455+00:00"
+    },
+    "KXLOWTNYC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:11:48.972827+00:00"
+    },
+    "KXLOWTMIA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:51.577184+00:00"
+    },
+    "KXLOWTLAX": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:12:04.472435+00:00"
+    },
+    "KXLOWTDEN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:52.722042+00:00"
+    },
+    "KXLOWTCHI": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:12:22.334614+00:00"
+    },
+    "KXLOWTAUS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:12:31.866995+00:00"
+    },
+    "KXHIGHTSFO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:12:41.738034+00:00"
+    },
+    "KXHIGHTSEA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:12:50.822964+00:00"
+    },
+    "KXHIGHTSATX": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:53.824662+00:00"
+    },
+    "KXHIGHTPHX": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:13:07.897355+00:00"
+    },
+    "KXHIGHTOKC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:54.943261+00:00"
+    },
+    "KXHIGHTNOLA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:56.056280+00:00"
+    },
+    "KXHIGHTMIN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:57.157593+00:00"
+    },
+    "KXHIGHTLV": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:13:39.777665+00:00"
+    },
+    "KXHIGHTHOU": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:58.287679+00:00"
+    },
+    "KXHIGHTDC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:13:58.437366+00:00"
+    },
+    "KXHIGHTDAL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:57:59.419829+00:00"
+    },
+    "KXHIGHTBOS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:14:15.332589+00:00"
+    },
+    "KXHIGHTATL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:14:25.255002+00:00"
+    },
+    "KXSPOTSTREAMSUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:17:46.659162+00:00"
+    },
+    "KXSPOTSTREAMGLOBAL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:18:11.823446+00:00"
+    },
+    "KXHIGHPHIL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:19:48.334454+00:00"
+    },
+    "KXHIGHNY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:19:59.362842+00:00"
+    },
+    "KXHIGHMIA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:01.982788+00:00"
+    },
+    "KXHIGHLAX": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:20:19.556991+00:00"
+    },
+    "KXHIGHDEN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:03.141614+00:00"
+    },
+    "KXHIGHCHI": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:04.250330+00:00"
+    },
+    "KXHIGHAUS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:05.367095+00:00"
+    },
+    "KXSHIBA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:38:09.904683+00:00"
+    },
+    "KXSPOTIFY2D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:19:36.222709+00:00"
+    },
+    "KXNCAABBGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:05.756008+00:00"
+    },
+    "KXMLBSTGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:13.766170+00:00"
+    },
+    "KXEWSLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:51:44.442067+00:00"
+    },
+    "KXNCAAMBGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:01:13.324226+00:00"
+    },
+    "KXRUGBYFRA14MATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:51:55.754263+00:00"
+    },
+    "KXFACUPGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:52:05.422458+00:00"
+    },
+    "KXARGLNBGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:08:19.057096+00:00"
+    },
+    "KXSCOTTISHPREMGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:55:07.174811+00:00"
+    },
+    "KXEFLCUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:30.759305+00:00"
+    },
+    "KXNDPLEADER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:31.829709+00:00"
+    },
+    "KXCBDECISIONMEXICO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:33.075776+00:00"
+    },
+    "KXNEXTTEAMSKUBAL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:38.965345+00:00"
+    },
+    "KXNEXTTEAMMLB": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:45.778089+00:00"
+    },
+    "KXOSCARCOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:58:48.155212+00:00"
+    },
+    "KXCBDECISIONRUSSIA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:02.575825+00:00"
+    },
+    "KXCBDECISIONEU": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:03.880555+00:00"
+    },
+    "KXCBDECISIONENGLAND": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:05.026312+00:00"
+    },
+    "KXFEDDECISION": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:07.219446+00:00"
+    },
+    "KXFEDCOMBO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:08.151576+00:00"
+    },
+    "KXFOMCDISSENTCOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:09.197967+00:00"
+    },
+    "KXCBDECISIONCANADA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:11.035787+00:00"
+    },
+    "KXHMONTHRANGE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:11.744345+00:00"
+    },
+    "KXCBDECISIONAUSTRALIA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:12.857504+00:00"
+    },
+    "KXWO-SILVER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T23:44:41.641204+00:00"
+    },
+    "KXWO-MEDALS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T23:44:46.239791+00:00"
+    },
+    "KXWO-GOLD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T23:44:50.784863+00:00"
+    },
+    "KXWO-BRONZE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T23:44:55.437122+00:00"
+    },
+    "KXTOP10BILLBOARDSPOTSBRUNO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:00:07.239128+00:00"
+    },
+    "KXECONSTATCPIYOY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:02.447166+00:00"
+    },
+    "KXECONSTATCPICORE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:03.990581+00:00"
+    },
+    "KXECONSTATCPI": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:05.717957+00:00"
+    },
+    "KXECONSTATCORECPIYOY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:09.205838+00:00"
+    },
+    "KXWCCREG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:00:55.387985+00:00"
+    },
+    "KXT20WORLDCUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:01.069805+00:00"
+    },
+    "KXSECREG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:05.971272+00:00"
+    },
+    "KXMWREG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:09.521540+00:00"
+    },
+    "KXBIGEASTREG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:12.813710+00:00"
+    },
+    "KXBIG12REG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:17.636192+00:00"
+    },
+    "KXBIG10REG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:23.106356+00:00"
+    },
+    "KXACCREG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:28.548752+00:00"
+    },
+    "KXAACREG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:32.425906+00:00"
+    },
+    "KXA10REG": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:36.493219+00:00"
+    },
+    "KXECONSTATU3": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:59.116239+00:00"
+    },
+    "KXEPLGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:01:44.167932+00:00"
+    },
+    "KXLALIGAGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:03.039135+00:00"
+    },
+    "KXSERIEAGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:04.247755+00:00"
+    },
+    "KXLIGUE1GAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:13.043128+00:00"
+    },
+    "KXBUNDESLIGAGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:15.144911+00:00"
+    },
+    "KXT20MATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:03.101251+00:00"
+    },
+    "KXBRASILEIROGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:54:14.097488+00:00"
+    },
+    "KXUELGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:54:18.412619+00:00"
+    },
+    "KXINTLFRIENDLYGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:54:54.578018+00:00"
+    },
+    "KXUCLGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:55:25.829819+00:00"
+    },
+    "KXNLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:58:00.337151+00:00"
+    },
+    "KXVALORANTMAP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:56:15.908214+00:00"
+    },
+    "KXVALORANTGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:56:26.522815+00:00"
+    },
+    "KXTGLMATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:56:50.119086+00:00"
+    },
+    "KXDIMAYORGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:09:41.806171+00:00"
+    },
+    "KXLIGAPORTUGALGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:09:52.508145+00:00"
+    },
+    "KXLALIGA2GAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:10:12.811800+00:00"
+    },
+    "KXSAUDIPLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:57:50.307359+00:00"
+    },
+    "KXEKSTRAKLASAGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:10:37.484266+00:00"
+    },
+    "KXDENSUPERLIGAGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:10:42.305505+00:00"
+    },
+    "KXSUPERLIGGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:11:23.065348+00:00"
+    },
+    "KXKHLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:58:36.956658+00:00"
+    },
+    "KXLOLMAP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:58:25.086877+00:00"
+    },
+    "KXLOLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:58:33.419803+00:00"
+    },
+    "KXMLSGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:06.395456+00:00"
+    },
+    "KXNBAGAME": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:00:59.395529+00:00"
+    },
+    "KXUNRIVALEDGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:01:16.902170+00:00"
+    },
+    "KXCODGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:22:44.018457+00:00"
+    },
+    "KXLIGAMXGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:23:00.400578+00:00"
+    },
+    "KXBOXING": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:30.637576+00:00"
+    },
+    "KXARGPREMDIVGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:56:36.286732+00:00"
+    },
+    "KXCS2": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:23:52.938345+00:00"
+    },
+    "KXNCAAWBGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:56:32.151175+00:00"
+    },
+    "KXCS2MAP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:22:04.933727+00:00"
+    },
+    "KXCS2GAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:21:23.277074+00:00"
+    },
+    "KXAHLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:28:56.892238+00:00"
+    },
+    "KXDOTA2GAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:09:45.930248+00:00"
+    },
+    "KXPGAH2H": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:02:09.366079+00:00"
+    },
+    "KXEREDIVISIEGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:42:50.639678+00:00"
+    },
+    "KXBELGIANPLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:43:45.808892+00:00"
+    },
+    "KXSLGREECEGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:44:36.653014+00:00"
+    },
+    "KXHNLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:52:44.654088+00:00"
+    },
+    "KXNCAAMLAXGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:11:27.771568+00:00"
+    },
+    "KXELHGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:58:42.950791+00:00"
+    },
+    "KXSERIEBGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:53:19.407866+00:00"
+    },
+    "KXSWISSLEAGUEGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:54:35.134465+00:00"
+    },
+    "KXSIXNATIONSMATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:54:59.410688+00:00"
+    },
+    "KXRUGBYESLMATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:55:19.126305+00:00"
+    },
+    "KXVTBGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:00:01.942294+00:00"
+    },
+    "KXBUNDESLIGA2GAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:02:40.947882+00:00"
+    },
+    "KXEFLCHAMPIONSHIPGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:57:18.986741+00:00"
+    },
+    "KXWOCURLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:06:19.328773+00:00"
+    },
+    "KXALEAGUEGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:12:47.020775+00:00"
+    },
+    "KXJLEAGUEGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:13:14.076107+00:00"
+    },
+    "KXNBLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:14:12.707225+00:00"
+    },
+    "KXRUGBYNRLMATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:25:19.331579+00:00"
+    },
+    "KXUFCFIGHT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:15:05.374336+00:00"
+    },
+    "KXUFCMOV": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:17:59.279504+00:00"
+    },
+    "KXUFCMOF": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:18:07.873377+00:00"
+    },
+    "KXPGATOUR": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:26:17.072082+00:00"
+    },
+    "KXLPGATOUR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:26:40.517553+00:00"
+    },
+    "KXDPWORLDTOUR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:27:29.461561+00:00"
+    },
+    "KXNBA2HWINNER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:24:10.437294+00:00"
+    },
+    "KXNBA1HWINNER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:24:17.061502+00:00"
+    },
+    "KXNCAAHOCKEYGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:21:16.108053+00:00"
+    },
+    "KXBOXINGMOV": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:46:55.560825+00:00"
+    },
+    "KXNCAAMB1HWINNER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:47:56.352613+00:00"
+    },
+    "KXATPSETWINNER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:26:21.867308+00:00"
+    },
+    "KXATPMATCH": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:28:03.249483+00:00"
+    },
+    "KXWOMHOCKEY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-20T23:59:56.250361+00:00"
+    },
+    "KXSHLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T00:03:54.351315+00:00"
+    },
+    "KXWTAMATCH": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:43:52.328406+00:00"
+    },
+    "KXCBDECISIONJAPAN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:06.244209+00:00"
+    },
+    "KXEOWEEK": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T19:00:03.882737+00:00"
+    },
+    "KXNASDAQ100": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 0.5,
+      "cached_at": "2026-02-23T19:28:45.656659+00:00"
+    },
+    "KXINX": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 0.5,
+      "cached_at": "2026-02-23T19:28:55.951174+00:00"
+    },
+    "KXAPRPOTUS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:54:09.254326+00:00"
+    },
+    "KXDELGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-21T23:55:42.176090+00:00"
+    },
+    "KXWOXC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:15:28.166620+00:00"
+    },
+    "KXRLGAME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T00:43:18.318792+00:00"
+    },
+    "KXATPCHALLENGERMATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:03:05.523347+00:00"
+    },
+    "KXWTACHALLENGERMATCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:05:53.899696+00:00"
+    },
+    "KXFACUPADVANCE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-22T01:52:10.554801+00:00"
+    },
+    "KXPGAR1LEAD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:34.794094+00:00"
+    },
+    "KXDPWORLDTOURR1LEAD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-02-23T18:59:59.664454+00:00"
+    },
+    "KXTRADEDEFICIT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:13:54.200093+00:00"
+    },
+    "KXNUMSHUTDOWNS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:13:55.448386+00:00"
+    },
+    "KXGOVWINS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:13:56.056127+00:00"
+    },
+    "KXFEDCHGCOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:13:59.222965+00:00"
+    },
+    "KXFAROEPM": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:01.264486+00:00"
+    },
+    "KXPERUPRES2ND": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:02.965633+00:00"
+    },
+    "KXMOVILSENATED": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:05.491010+00:00"
+    },
+    "KXDENMARKPM": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:06.269281+00:00"
+    },
+    "KXMOVIL9DNOM": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:08.991631+00:00"
+    },
+    "KXRANKLISTIFPIARTIST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:13.201292+00:00"
+    },
+    "KXGDPYEAR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:15.791813+00:00"
+    },
+    "KXRECORDNFLWORST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:21.693263+00:00"
+    },
+    "KXRECORDNFLBEST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:27.754473+00:00"
+    },
+    "KXNFLNFCCHAMP": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:30.922298+00:00"
+    },
+    "KXNFLAFCCHAMP": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:35.549900+00:00"
+    },
+    "KXRHOUSESEATS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:37.606723+00:00"
+    },
+    "KXNCAAFCONF": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:38.609829+00:00"
+    },
+    "KXLEADERNFLSACKS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:42.466864+00:00"
+    },
+    "KXLEADERNFLRYDS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:47.468086+00:00"
+    },
+    "KXLEADERNFLRUSHYDS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:52.148278+00:00"
+    },
+    "KXLEADERNFLRUSHTDS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:14:56.840944+00:00"
+    },
+    "KXLEADERNFLRTDS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:05.551260+00:00"
+    },
+    "KXLEADERNFLPYDS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:12.557088+00:00"
+    },
+    "KXLEADERNFLPTDS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:19.639173+00:00"
+    },
+    "KXLEADERNFLPINT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:26.700037+00:00"
+    },
+    "KXLEADERNFLINT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:32.278124+00:00"
+    },
+    "KXDSENATESEATSH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:33.689637+00:00"
+    },
+    "KXDSENATESEATS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:35.945548+00:00"
+    },
+    "KXDHOUSESEATS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:38.573338+00:00"
+    },
+    "KXBALANCEPOWERCOMBO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:39.465121+00:00"
+    },
+    "CONTROLS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:39.970122+00:00"
+    },
+    "CONTROLH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:40.506610+00:00"
+    },
+    "KXNCAAFCOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:46.808581+00:00"
+    },
+    "KXNCAAF": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:15:58.704306+00:00"
+    },
+    "KXCLOSESTGOVERNOR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:03.049010+00:00"
+    },
+    "KXECONPATH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:03.875783+00:00"
+    },
+    "KXNFLNFCWEST": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:04.671699+00:00"
+    },
+    "KXNFLNFCSOUTH": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:05.465945+00:00"
+    },
+    "KXNFLNFCNORTH": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:06.291644+00:00"
+    },
+    "KXNFLNFCEAST": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:07.095607+00:00"
+    },
+    "KXNFLAFCWEST": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:07.893515+00:00"
+    },
+    "KXNFLAFCSOUTH": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:08.682031+00:00"
+    },
+    "KXNFLAFCNORTH": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:09.523294+00:00"
+    },
+    "KXNFLAFCEAST": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:10.351342+00:00"
+    },
+    "KXHOWMANYSPEAKERHOUSE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:11.007406+00:00"
+    },
+    "KXUNSEC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:12.343077+00:00"
+    },
+    "KXTXHOUSEDEMSEATS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:14.909054+00:00"
+    },
+    "KXCLOSESTSENATE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:16.984388+00:00"
+    },
+    "KXRECCOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:17.589508+00:00"
+    },
+    "KXVPBREAKS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:19.502059+00:00"
+    },
+    "KXWBCWELTERWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:22.862789+00:00"
+    },
+    "KXWBCFLYWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:26.452593+00:00"
+    },
+    "KXWBCFEATHERWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:29.684878+00:00"
+    },
+    "KXWBCCRUISERWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:33.057039+00:00"
+    },
+    "KXWBCBANTAMWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:36.756186+00:00"
+    },
+    "KXWBCMIDDLEWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:40.266449+00:00"
+    },
+    "KXWBCLIGHTWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:43.427472+00:00"
+    },
+    "KXWBCHEAVYWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:46.580834+00:00"
+    },
+    "KXTRUMPFIRE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:47.744587+00:00"
+    },
+    "KXSAFEBANK": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:48.009589+00:00"
+    },
+    "KXPARDONSYEAR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:50.281458+00:00"
+    },
+    "KXNEWROLEX": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:51.824280+00:00"
+    },
+    "KXNEWROLEFAZE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:54.172483+00:00"
+    },
+    "KXMODELHIGH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:55.703658+00:00"
+    },
+    "KXMESENOUTCOME": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:16:56.504134+00:00"
+    },
+    "KXHEISMAN": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:01.473705+00:00"
+    },
+    "KXFTCNEXT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:02.471637+00:00"
+    },
+    "KXFEDCHAIRCOUNT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:04.783175+00:00"
+    },
+    "KXENGAGEMENTISHOWSPEED": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:05.018867+00:00"
+    },
+    "KXBIGBROTHERBRAZIL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:09.080625+00:00"
+    },
+    "KXBALLONDOR": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:15.440981+00:00"
+    },
+    "KXATF": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:17.066972+00:00"
+    },
+    "KXACQUANNOUNCEPINS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:18.204866+00:00"
+    },
+    "KXETHY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 0.0,
+      "cached_at": "2026-04-13T19:17:22.241847+00:00"
+    },
+    "KXBTCY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 0.0,
+      "cached_at": "2026-04-13T19:17:28.251076+00:00"
+    },
+    "KXBTC2026200": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:28.518253+00:00"
+    },
+    "KXPERLIGA1": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:31.871600+00:00"
+    },
+    "KXNASDAQ100Y": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 0.5,
+      "cached_at": "2026-04-13T19:17:37.286289+00:00"
+    },
+    "KXINXY": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 0.5,
+      "cached_at": "2026-04-13T19:17:42.128539+00:00"
+    },
+    "KXATP1RANK": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:44.300278+00:00"
+    },
+    "KXWORDOFTHEYEAR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:44.917994+00:00"
+    },
+    "KXVENFUTVE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:47.541202+00:00"
+    },
+    "KXUFCWELTERWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:49.407846+00:00"
+    },
+    "KXUFCMIDDLEWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:50.942569+00:00"
+    },
+    "KXUFCLIGHTWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:53.048567+00:00"
+    },
+    "KXUFCLHEAVYWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:55.051472+00:00"
+    },
+    "KXUFCHEAVYWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:56.860809+00:00"
+    },
+    "KXUFCFLYWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:17:58.536504+00:00"
+    },
+    "KXUFCFEATHERWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:00.201358+00:00"
+    },
+    "KXUFCBANTAMWEIGHTTITLE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:09.841867+00:00"
+    },
+    "KXTOURNAMENTOFCHAMPIONS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:13.542433+00:00"
+    },
+    "KXTOPSONGTHIRDUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:17.165374+00:00"
+    },
+    "KXTOPSONGTHIRD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:20.644000+00:00"
+    },
+    "KXTOPBUSINESS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:43.147972+00:00"
+    },
+    "KXTOPARTISTUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:46.086755+00:00"
+    },
+    "KXTOPARTISTTHIRD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:47.751457+00:00"
+    },
+    "KXTOPARTISTRUNNERUPUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:49.459240+00:00"
+    },
+    "KXTOPARTISTRUNNERUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:51.125607+00:00"
+    },
+    "KXTOPARTIST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:52.925379+00:00"
+    },
+    "KXTOPALBUMTHIRDUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:55.079553+00:00"
+    },
+    "KXTOPALBUMTHIRD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:18:57.320235+00:00"
+    },
+    "KXTOPALBUMSPOTIFYUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:00.077491+00:00"
+    },
+    "KXTOPALBUMSPOTIFYRUNNERUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:02.691531+00:00"
+    },
+    "KXTOPALBUMSPOTIFY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:04.423363+00:00"
+    },
+    "KXTOPALBUMRUNNERUPUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:06.602191+00:00"
+    },
+    "KXSURVIVOR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:10.944121+00:00"
+    },
+    "KXSEXYMAN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:13.923881+00:00"
+    },
+    "KXRATECUTCOUNT": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:17.715285+00:00"
+    },
+    "KXRANKLISTGOOGLESEARCH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:19.756225+00:00"
+    },
+    "KXRANKLISTGOOGLESEARCH2": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:21.869367+00:00"
+    },
+    "KXNEXTTEAMNFL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:27.782660+00:00"
+    },
+    "KXNEXTLEVELCHEF": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:30.591164+00:00"
+    },
+    "KXMLBNLROTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:36.245172+00:00"
+    },
+    "KXMLBNLRELOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:40.127500+00:00"
+    },
+    "KXMLBNLMVP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:49.240651+00:00"
+    },
+    "KXMLBNLMOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:19:52.325513+00:00"
+    },
+    "KXMLBNLHAARON": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:01.171397+00:00"
+    },
+    "KXMLBNLCY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:09.312865+00:00"
+    },
+    "KXMLBNLCPOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:11.393752+00:00"
+    },
+    "KXMLBEOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:17.158120+00:00"
+    },
+    "KXMLBALROTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:22.256858+00:00"
+    },
+    "KXMLBALRELOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:26.318436+00:00"
+    },
+    "KXMLBALMVP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:34.171936+00:00"
+    },
+    "KXMLBALMOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:37.070772+00:00"
+    },
+    "KXMLBALHAARON": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:44.597773+00:00"
+    },
+    "KXMLBALCY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:52.538459+00:00"
+    },
+    "KXMLBALCPOTY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:54.661379+00:00"
+    },
+    "KXLOSEREELECTIONRSEN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:55.817281+00:00"
+    },
+    "KXLOSEREELECTIONGOV": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:57.009027+00:00"
+    },
+    "KXLOSEREELECTIONDSEN": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:20:58.153426+00:00"
+    },
+    "KXGOVNYNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:00.287859+00:00"
+    },
+    "KXEUROVISIONTELEV": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:06.890252+00:00"
+    },
+    "KXEUROVISIONJURY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:13.313316+00:00"
+    },
+    "KXEUROVISION": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:19.649972+00:00"
+    },
+    "KXEMERCUTS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:20.661038+00:00"
+    },
+    "KXCODINGMODEL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:22.430431+00:00"
+    },
+    "KXBABYNAMEGIRL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:24.360967+00:00"
+    },
+    "KXBABYNAMEBOY": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:27.560761+00:00"
+    },
+    "KXAMERICANIDOL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:33.444621+00:00"
+    },
+    "KXECULP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:36.407139+00:00"
+    },
+    "KXMLSWEST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:39.228343+00:00"
+    },
+    "KXMLSEAST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:41.998115+00:00"
+    },
+    "KXMLSCUP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:47.827117+00:00"
+    },
+    "KXUSL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:52.523739+00:00"
+    },
+    "KXURYPD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:57.006047+00:00"
+    },
+    "KXTRUMPENDORSELOSS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:21:59.459967+00:00"
+    },
+    "KXF1": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:15.092721+00:00"
+    },
+    "KXSAILGP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:18.009367+00:00"
+    },
+    "KXF1CONSTRUCTORS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:20.030639+00:00"
+    },
+    "KXCHLLDP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:23.026717+00:00"
+    },
+    "KXNCAAFSBELT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:25.566223+00:00"
+    },
+    "KXNCAAFPAC12": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:27.134567+00:00"
+    },
+    "KXNCAAFMWC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:28.995728+00:00"
+    },
+    "KXNCAAFMAC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:31.440645+00:00"
+    },
+    "KXNCAAFCUSA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:33.410688+00:00"
+    },
+    "KXNCAAFACC": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:37.316962+00:00"
+    },
+    "KXNCAAFAAC": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:40.558118+00:00"
+    },
+    "KXNCAAFB10": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:44.761507+00:00"
+    },
+    "KXNCAAFSEC": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:48.903728+00:00"
+    },
+    "KXNCAAFB12": {
+      "fee_type": "quadratic_with_maker_fees",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:22:53.098456+00:00"
+    },
+    "KXBRASILEIRO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:23:04.104336+00:00"
+    },
+    "KXMOTOGPTEAMS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:23:53.651052+00:00"
+    },
+    "KXMOTOGP": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:23:57.620047+00:00"
+    },
+    "KXCHNSL": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:00.592192+00:00"
+    },
+    "KXNASCARCUPSERIES": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:06.080829+00:00"
+    },
+    "KXNCAAMBNEXTCOACH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:10.663709+00:00"
+    },
+    "KXNASCARAUTOPARTSSERIES": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:21.202164+00:00"
+    },
+    "KXNASCARTRUCKSERIES": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:27.921938+00:00"
+    },
+    "KXNY12D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:35.806764+00:00"
+    },
+    "KXVA2D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:37.130368+00:00"
+    },
+    "KXUT1D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:38.850349+00:00"
+    },
+    "KXTXSENCOMBO": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:39.984966+00:00"
+    },
+    "KXSENATEVAR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:42.547808+00:00"
+    },
+    "KXSENATETXR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:43.479050+00:00"
+    },
+    "KXSENATEOHSR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:46.250810+00:00"
+    },
+    "KXSENATEOHSD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:47.040280+00:00"
+    },
+    "KXSENATENHR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:47.967999+00:00"
+    },
+    "KXSENATENHD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:49.141228+00:00"
+    },
+    "KXSENATEMND": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:51.475382+00:00"
+    },
+    "KXSENATEMID": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:55.318411+00:00"
+    },
+    "KXSENATEMER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:55.739032+00:00"
+    },
+    "KXSENATEMED": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:57.080306+00:00"
+    },
+    "KXSENATEKYR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:24:58.431606+00:00"
+    },
+    "KXSENATEGAR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:00.110986+00:00"
+    },
+    "KXSENATEFLR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:02.027326+00:00"
+    },
+    "KXSENATEFLD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:03.552370+00:00"
+    },
+    "KXNY8D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:04.129519+00:00"
+    },
+    "KXNY4R": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:05.518492+00:00"
+    },
+    "KXNY17D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:06.996198+00:00"
+    },
+    "KXNY10D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:07.951856+00:00"
+    },
+    "KXMO01D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:08.764961+00:00"
+    },
+    "KXME02D": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:09.743585+00:00"
+    },
+    "KXLOSEPRIMARYSENATER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:10.703515+00:00"
+    },
+    "KXLOSEPRIMARYSENATED": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:11.683201+00:00"
+    },
+    "KXLOSEPRIMARYHOUSER": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:13.288886+00:00"
+    },
+    "KXLOSEPRIMARYHOUSED": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:14.861679+00:00"
+    },
+    "KXGOVWINOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:16.345103+00:00"
+    },
+    "KXGOVSCNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:17.541090+00:00"
+    },
+    "KXGOVPANOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:18.652460+00:00"
+    },
+    "KXGOVOHNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:19.785307+00:00"
+    },
+    "KXGOVOHNOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:21.359766+00:00"
+    },
+    "KXGOVNMNOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:22.122070+00:00"
+    },
+    "KXGOVMNNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:23.781296+00:00"
+    },
+    "KXGOVMINOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:26.750505+00:00"
+    },
+    "KXGOVMINOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:28.420162+00:00"
+    },
+    "KXGOVMENOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:31.581739+00:00"
+    },
+    "KXGOVMENOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:33.626052+00:00"
+    },
+    "KXGOVKSNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:35.123939+00:00"
+    },
+    "KXGOVKSNOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:35.927931+00:00"
+    },
+    "KXGOVGANOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:37.086656+00:00"
+    },
+    "KXGOVGANOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:38.844124+00:00"
+    },
+    "KXGOVFLNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:40.522684+00:00"
+    },
+    "KXGOVFLNOMD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:42.080386+00:00"
+    },
+    "KXGOVAZNOMR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:43.931348+00:00"
+    },
+    "KXGASOSR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:44.682504+00:00"
+    },
+    "KXGA14R": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:46.400386+00:00"
+    },
+    "KXDCDELD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:48.294413+00:00"
+    },
+    "KXAZ01R": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:49.947138+00:00"
+    },
+    "KXKLEAGUE": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:25:52.237721+00:00"
+    },
+    "KXTEAMSINWS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:34.104394+00:00"
+    },
+    "KXMLBNLWEST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:35.185438+00:00"
+    },
+    "KXMLBNLEAST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:36.169746+00:00"
+    },
+    "KXMLBNLCENT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:37.100139+00:00"
+    },
+    "KXMLBALWEST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:38.095554+00:00"
+    },
+    "KXMLBALEAST": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:39.046795+00:00"
+    },
+    "KXMLBALCENT": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:40.012467+00:00"
+    },
+    "KXNEXTTEAMNBA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:26:47.540779+00:00"
+    },
+    "KXNEXTNBACOACH": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:27:40.524539+00:00"
+    },
+    "KXMLBWORSTRECORD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:27:49.287931+00:00"
+    },
+    "KXMLBBESTRECORD": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:27:57.094573+00:00"
+    },
+    "KXLEADERMLBWINS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:28:09.659012+00:00"
+    },
+    "KXLEADERMLBWAR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:28:19.445106+00:00"
+    },
+    "KXLEADERMLBTRIPLES": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:28:26.426000+00:00"
+    },
+    "KXLEADERMLBSTEALS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:28:36.940136+00:00"
+    },
+    "KXLEADERMLBRUNS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:28:49.520421+00:00"
+    },
+    "KXLEADERMLBRBI": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:02.041642+00:00"
+    },
+    "KXLEADERMLBOPS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:11.190333+00:00"
+    },
+    "KXLEADERMLBKS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:16.257657+00:00"
+    },
+    "KXLEADERMLBHR": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:20.826188+00:00"
+    },
+    "KXLEADERMLBHITS": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:32.889645+00:00"
+    },
+    "KXLEADERMLBERA": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:42.854939+00:00"
+    },
+    "KXLEADERMLBDOUBLES": {
+      "fee_type": "quadratic",
+      "fee_multiplier": 1.0,
+      "cached_at": "2026-04-13T19:29:54.891126+00:00"
+    }
+  }
+}

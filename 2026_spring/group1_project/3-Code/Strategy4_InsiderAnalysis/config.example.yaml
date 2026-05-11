@@ -1,0 +1,45 @@
+﻿polling:
+  poll_minutes: 10
+  adaptive: false
+  adaptive_min_minutes: 2
+  adaptive_max_minutes: 15
+  adaptive_trade_burst_count: 5
+  adaptive_window_minutes: 30
+
+aggressive:
+  price_tolerance: 0.005
+  burst_window_minutes: 60
+  burst_trade_count: 3
+  burst_contracts: 200
+
+large_trade:
+  absolute_contracts: 500
+  pct_trailing_volume: 0.20
+  pct_top_book: 0.30
+  trailing_volume_window: 7d
+
+step_change:
+  step_change_dollars: 0.10
+  step_window_hours: 24
+  step_aggressive_contracts: 200
+
+favorite:
+  favorite_high: 0.65
+  favorite_min_days: 7
+
+scoring:
+  score_threshold_flag: 70
+  weights:
+    aggressive_burst: 30
+    large_aggressive: 25
+    step_change: 25
+    sustained_favorite: 20
+
+backoff:
+  max_retries: 5
+  base_seconds: 1
+  max_seconds: 30
+
+api:
+  data_api_base: https://demo-api.kalshi.co
+  trade_api_base: https://demo-api.kalshi.co

@@ -1,0 +1,21 @@
+{
+  "events": {},
+  "series": {
+    "KXF1TOP5": {
+      "yes_count": 5,
+      "note": "F1 Top 5 Finishers events resolve exactly 5 markets to YES."
+    },
+    "KXF1TOP10": {
+      "yes_count": 10,
+      "note": "F1 Top 10 Finishers events resolve exactly 10 markets to YES."
+    },
+    "KXF1RACEPODIUM": {
+      "yes_count": 3,
+      "note": "F1 Race Podium events resolve exactly 3 markets to YES."
+    },
+    "KXPGATOP20": {
+      "yes_count": 20,
+      "note": "PGA Top 20 Finishers events resolve exactly 20 markets to YES."
+    }
+  }
+}
