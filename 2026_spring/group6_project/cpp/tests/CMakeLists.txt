@@ -1,0 +1,39 @@
+enable_testing()
+
+add_executable(matching_engine_tests matching_engine_tests.cpp)
+target_include_directories(matching_engine_tests PRIVATE ${CMAKE_SOURCE_DIR}/src/matching_engine)
+target_link_libraries(matching_engine_tests PRIVATE ghostbook_matching_engine)
+
+add_test(NAME matching_engine_tests COMMAND matching_engine_tests)
+
+add_executable(gateway_tests gateway_tests.cpp ../src/gateway/tcp_gateway.cpp ../src/matching_engine/matching_main.cpp)
+target_include_directories(gateway_tests PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/src/matching_engine ${CMAKE_SOURCE_DIR}/src/gateway)
+target_link_libraries(gateway_tests PRIVATE Boost::system pthread)
+
+add_test(NAME gateway_tests COMMAND gateway_tests)
+
+add_executable(gateway_tcp_integration_tests gateway_tcp_integration_tests.cpp ../src/gateway/tcp_gateway.cpp ../src/matching_engine/matching_main.cpp)
+target_include_directories(gateway_tcp_integration_tests PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/src/matching_engine ${CMAKE_SOURCE_DIR}/src/gateway)
+target_link_libraries(gateway_tcp_integration_tests PRIVATE Boost::system pthread)
+
+add_test(NAME gateway_tcp_integration_tests COMMAND gateway_tcp_integration_tests)
+
+add_executable(ndfex_gateway_tests ndfex_gateway_tests.cpp)
+target_link_libraries(ndfex_gateway_tests PRIVATE ghostbook_ndfex_gateway)
+add_test(NAME ndfex_gateway_tests COMMAND ndfex_gateway_tests)
+
+add_executable(ndfex_gateway_tcp_integration_tests ndfex_gateway_tcp_integration_tests.cpp)
+target_link_libraries(ndfex_gateway_tcp_integration_tests PRIVATE ghostbook_ndfex_gateway)
+add_test(NAME ndfex_gateway_tcp_integration_tests COMMAND ndfex_gateway_tcp_integration_tests)
+
+add_executable(ndfex_gateway_udp_integration_tests ndfex_gateway_udp_integration_tests.cpp)
+target_link_libraries(ndfex_gateway_udp_integration_tests PRIVATE ghostbook_ndfex_gateway)
+add_test(NAME ndfex_gateway_udp_integration_tests COMMAND ndfex_gateway_udp_integration_tests)
+
+add_executable(replay_engine_tests replay_engine_tests.cpp)
+target_link_libraries(replay_engine_tests PRIVATE ghostbook_replay_engine)
+add_test(NAME replay_engine_tests COMMAND replay_engine_tests)
+
+add_executable(ndfex_replay_gateway_tests ndfex_replay_gateway_tests.cpp)
+target_link_libraries(ndfex_replay_gateway_tests PRIVATE ghostbook_ndfex_gateway)
+add_test(NAME ndfex_replay_gateway_tests COMMAND ndfex_replay_gateway_tests)

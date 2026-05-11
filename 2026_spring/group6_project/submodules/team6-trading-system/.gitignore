@@ -1,0 +1,11 @@
+# Compiled bytecode
+*.o
+bin/
+lib/
+
+# Editor configuration
+.idea/
+
+# Clang language server configuration
+.clangd
+
