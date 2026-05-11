@@ -1,0 +1,21 @@
+[Unit]
+Description=Distributed Prediction Market - client listener
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=market
+Group=market
+WorkingDirectory=/home/market/Distributed-Prediction-Market-Server
+EnvironmentFile=-/etc/prediction-market.env
+ExecStart=/home/market/Distributed-Prediction-Market-Server/client/client-listener/run_forever.sh
+Restart=always
+RestartSec=5
+KillMode=mixed
+TimeoutStopSec=10
+StandardOutput=append:/var/log/prediction-market/listener.log
+StandardError=append:/var/log/prediction-market/listener.log
+
+[Install]
+WantedBy=multi-user.target
