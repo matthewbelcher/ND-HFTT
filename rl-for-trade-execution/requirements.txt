@@ -1,0 +1,7 @@
+gymnasium
+stable-baselines3
+pandas
+numpy
+databento
+matplotlib
+python-dotenv
